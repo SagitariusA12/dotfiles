@@ -2,7 +2,6 @@
 # IGNORAR REPOS EMBUTIDOS
 # ==========================
 alacritty/.config/alacritty/themes/
-nvim/.config/nvim/
 tmux/.tmux/plugins/
 
 # ==========================
