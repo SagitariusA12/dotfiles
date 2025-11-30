@@ -1,0 +1,38 @@
+Como UsarSalve o textobjects.scm: Certifique-se de que o arquivo ~/.config/nvim/queries/html/textobjects.scm (fornecido na resposta anterior) está salvo e atualizado.
+
+
+Atualize a Configuração: Substitua seu arquivo de configuração pelo código acima, geralmente em ~/.config/nvim/lua/plugins/treesitter.lua ou similar.
+
+Atualize os Parsers: Execute :TSUpdate no Neovim para garantir que os parsers de todas as linguagens listadas estejam instalados.
+
+
+
+
+# Comandos de Textobjects e Navegação para HTML no Neovim
+
+Comando        | Modo       | Descrição                                    | Textobject/Ação
+---------------|------------|----------------------------------------------|--------------------------------
+at             | Visual     | Seleciona a tag inteira (com start/end)      | @tag.outer
+it             | Visual     | Seleciona o conteúdo interno da tag           | @tag.inner
+an             | Visual     | Seleciona o nome da tag                      | @tag.name
+aa             | Visual     | Seleciona o nome do atributo                 | @attribute.name
+av             | Visual     | Seleciona o valor do atributo                | @attribute.value
+ix             | Visual     | Seleciona o texto interno de um elemento     | @text.inner
+]t             | Normal     | Vai para o início da próxima tag             | @tag.outer (início)
+[t             | Normal     | Vai para o início da tag anterior            | @tag.outer (início)
+]T             | Normal     | Vai para o fim da próxima tag                | @tag.outer (fim)
+[T             | Normal     | Vai para o fim da tag anterior               | @tag.outer (fim)
+]a             | Normal     | Vai para o próximo atributo                  | @attribute.name (início)
+[a             | Normal     | Vai para o atributo anterior                 | @attribute.name (início)
+]x             | Normal     | Vai para o próximo texto interno             | @text.inner (início)
+[x             | Normal     | Vai para o texto interno anterior            | @text.inner (início)
+<leader>sn     | Normal     | Troca a tag atual com a próxima              | @tag.outer (swap next)
+<leader>sp     | Normal     | Troca a tag atual com a anterior             | @tag.outer (swap previous)
+<leader>sa     | Normal     | Troca o atributo atual com o próximo         | @attribute.name (swap next)
+<leader>sA     | Normal     | Troca o atributo atual com o anterior        | @attribute.name (swap previous)
+<C-d>          | Normal     | Pula para a tag correspondente               | JumpTagJump (plugin jump-tag)
+<C-t>          | Inserção   | Insere a tag de fechamento                   | JumpTagInsert (plugin jump-tag)
+<leader>jt     | Normal     | Pula para a tag correspondente               | JumpTagJump (plugin jump-tag)
+<leader>ct     | Normal     | Insere a tag de fechamento                   | JumpTagInsert (plugin jump-tag)
+<leader>tn     | Normal     | Vai para a próxima tag (atalho para ]t)      | @tag.outer (início)
+<leader>tp     | Normal     | Vai para a tag anterior (atalho para [t)     | @tag.outer (início)

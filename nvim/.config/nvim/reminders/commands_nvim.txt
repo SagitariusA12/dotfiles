@@ -1,0 +1,39 @@
+| Tecla            | Ação                              |
+| ---------------- | --------------------------------- |
+| `<leader>th`     | Abrir terminal horizontal         |
+| `<leader>tv`     | Abrir terminal vertical           |
+| `<leader>tf`     | Abrir terminal flutuante          |
+| `<leader>tt`     | Abrir terminal em aba             |
+| `<leader>ta`     | Fechar **todos os terminais**     |
+| `<leader>ls`     | Iniciar `live-server`             |
+| `<leader>tn`     | Abrir terminal Node.js            |
+| `<leader>ht`     | Abrir `htop` (monitor de sistema) |
+| `<Esc>` (modo t) | Voltar ao modo normal do Neovim   |
+
+
+
+| Delimitador | Dentro (`di`) | Ao redor (`da`) |
+| ----------- | ------------- | --------------- |
+| `()`        | `di(`         | `da(`           |
+| `{}`        | `di{`         | `da{`           |
+| `[]`        | `di[`         | `da[`           |
+| `<>`        | `di<`         | `da<`           |
+| `""`        | `di"`         | `da"`           |
+| `''`        | `di'`         | `da'`           |
+
+
+| Ação                          | Atalho                        |
+| ----------------------------- | ----------------------------- |
+| Selecionar próxima ocorrência | `Ctrl-n`                      |
+| Selecionar acima/abaixo       | `Ctrl-Up/Down`                |
+| Entrar no modo múltiplos      | `Ctrl-n` em texto selecionado |
+| Cancelar todos                | `Esc Esc`                     |
+
+| Comando | O que faz                             | Entra em modo inserção? |
+| ------- | ------------------------------------- | ----------------------- |
+| `cw`    | Apaga da posição até o fim da palavra | ✅ Sim                   |
+| `caw`   | Apaga a palavra inteira + espaço      | ✅ Sim                   |
+| `ciw`   | Apaga a palavra atual                 | ✅ Sim                   |
+| `diw`   | Deleta a palavra atual                | ❌ Não                   |
+| `daw`   | Deleta a palavra + espaço             | ❌ Não                   |
+

@@ -1,0 +1,38 @@
+# Diretórios temporários do Neovim
+swap//
+*.swp
+*.swo
+*.un~
+
+# Arquivos de backup do Neovim
+*.bak
+*.tmp
+
+# Diretórios de plugins (caso você use packer ou lazy)
+site/
+plugin/packer_compiled.lua
+lazy-lock.json
+
+# Undo files
+undodir/
+*.undo
+
+# Arquivos do LSP, DAP ou outros gerados localmente
+log/
+*.log
+
+# Arquivos de sessão ou estado
+*.session
+*.nvim
+
+# Arquivos de cache comuns
+*.luac
+*.pyc
+__pycache__/
+
+# nvim-tree ou outros plugins que criam arquivos temporários
+nvim-tree.log
+
+# Arquivos de testes locais ou temporários
+test.*
+
