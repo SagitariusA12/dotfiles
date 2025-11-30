@@ -1,0 +1,122 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/hyper.toml"
+]
+
+[window]
+opacity = 0.8
+padding.x = 0
+padding.y = 0
+decorations = "Full"
+decorations_theme_variant = "Dark"
+
+[font]
+normal.family = "Hack"
+bold.family = "Hack"
+italic.family = "Hack"
+bold_italic.family = "Hack"
+size = 14.0
+
+[terminal]
+
+[terminal.shell]
+program = "/usr/bin/tmux"
+args = ["new-session", "-A", "-s", "main"]
+#[terminal.shell]
+#program = "zellij"
+#args = []
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/monokai_charcoal.toml"
+]
+
+# live_config_reload = true
+
+[terminal.shell]
+program = "/usr/bin/tmux"
+args = ["new-session", "-A", "-s", "main"]
+
+# [colors]
+# draw_bold_text_with_bright_colors = true
+#
+# [colors.bright]
+# black = "#575b70"
+# blue = "#caa9fa"
+# cyan = "#9aedfe"
+# green = "#5af78e"
+# magenta = "#ff92d0"
+# red = "#ff6e67"
+# white = "#e6e6e6"
+# yellow = "#f4f99d"
+#
+# [colors.normal]
+# black = "#000000"
+# blue = "#caa9fa"
+# cyan = "#8be9fd"
+# green = "#50fa7b"
+# magenta = "#ff79c6"
+# red = "#ff5555"
+# white = "#bfbfbf"
+# yellow = "#f1fa8c"
+#
+# [colors.primary]
+# background = "#000000"
+# foreground = "#f8f8f2"
+#
+# [cursor]
+# style = "Underline"
+#
+# [env]
+# TERM = "xterm-256color"
+[font]
+
+[font.bold]
+family = "FiraCode Nerd Font Mono"
+
+[font.bold_italic]
+family = "FiraCode Nerd Font Mono"
+
+[font.italic]
+family = "FiraCode Nerd Font Mono"
+
+[font.normal]
+family = "FiraCode Nerd Font Mono"
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[window]
+decorations = "none"
+decorations_theme_variant = "Dark"
+dynamic_padding = true
+opacity = 0.8
+title = "Alacritty"
+padding = { x = 10, y = 10 }
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.dimensions]
+columns = 100
+lines = 30
+
+[terminal]
+
+
+[[keyboard.bindings]]
+key = "F11"
+action = "ToggleFullscreen"
+
+[[keyboard.bindings]]
+key = "F10"
+action = "ToggleMaximized"
+
+[[keyboard.bindings]]
+key = "L"
+mods = "Control"
+chars = "clear\n"

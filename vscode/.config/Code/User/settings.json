@@ -1,0 +1,336 @@
+{
+  "files.autoSave": "afterDelay",
+  // "files.hotExit": "off",
+  "emmet.formatExpansion": true,
+  "workbench.startupEditor": "none",
+  "editor.fontFamily": "JetBrains Mono",
+  // "editor.fontFamily": "FiraCode Nerd Font Propo",
+  "editor.fontSize": 14,
+  "editor.lineHeight": 1.4,
+  "editor.fontLigatures": true,
+  "editor.rulers": [
+    120,
+    200
+  ],
+  "editor.wordWrap": "on",
+  "editor.renderLineHighlight": "gutter",
+  "editor.minimap.enabled": false,
+  "editor.scrollbar.vertical": "auto",
+  "editor.scrollbar.horizontal": "visible",
+  "editor.semanticHighlighting.enabled": true,
+  "editor.parameterHints.enabled": false,
+  "editor.suggestSelection": "first",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.tabSize": 4,
+  "editor.formatOnSave": true,
+  "workbench.iconTheme": "symbols",
+  "workbench.editor.labelFormat": "short",
+  "workbench.layoutControl.enabled": true,
+  "workbench.preferredDarkColorTheme": "GitHub Dark",
+  "workbench.preferredLightColorTheme": "Min Dark",
+  "window.autoDetectHighContrast": true,
+  "explorer.compactFolders": false,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": ".eslint*, prettier*, tsconfig*, vite*, pnpm-*, bun.lockb, nest*, package-lock*",
+    "tailwind.config.*": "tailwind.config*, postcss.config*",
+    ".env.local": ".env*",
+    ".env": ".env*",
+    "*.sqlite": "${capture}.${extname}-*",
+    "*.db": "${capture}.${extname}-*",
+    "*.sqlite3": "${capture}.${extname}-*",
+    "*.db3": "${capture}.${extname}-*",
+    "*.sdb": "${capture}.${extname}-*",
+    "*.s3db": "${capture}.${extname}-*"
+  },
+  "explorer.sortOrder": "foldersNestsFiles",
+  "window.titleBarStyle": "custom",
+  "window.commandCenter": false,
+  "window.autoDetectColorScheme": false,
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+  "terminal.integrated.gpuAcceleration": "on",
+  "terminal.integrated.showExitAlert": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.suggest.autoImports": true,
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "graphql"
+  ],
+  "cSpell.language": "en,pt",
+  "cSpell.userWords": [
+    "automations",
+    "bootcamp",
+    "chakra",
+    "datadog",
+    "esbuild",
+    "fastify",
+    "nestjs",
+    "postgresql",
+    "tailwindcss",
+    "unform"
+  ],
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+  "apc.electron": {
+    "titleBarStyle": "hidden",
+    "trafficLightPosition": {
+      "x": 11,
+      "y": 10
+    },
+    "opacity": 0.3,
+    "frame": false
+  },
+  "apc.header": {
+    "height": 36
+  },
+  "apc.listRow": {
+    "height": 24
+  },
+  "apc.stylesheet": {
+    ".title-label > h2": "display: none",
+    ".editor-actions": "display: flex",
+    ".nosidebar .inline-tabs-placeholder": "width: 75px",
+    ".pane-header": "padding: 0 8px",
+    ".pane-body": "padding: 8px",
+    ".split-view-view:first-child .pane-header": "display: none !important;",
+    ".monaco-list-row": "border-radius: 4px;",
+    ".monaco-workbench .monaco-list:not(.element-focused):focus:before": "display: none;"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.printWidth": 80,
+  "prettier.jsxSingleQuote": true,
+  "prettier.bracketSameLine": false,
+  "editor.largeFileOptimizations": false,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "python.createEnvironment.trigger": "off",
+  "[python]": {
+    "editor.formatOnSaveMode": "file",
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "eeyore.yapf",
+    "editor.formatOnType": false
+  },
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "editor.tokenColorCustomizations": {
+    "[Kolada]": {
+      "textMateRules": [
+        {
+          "scope": "keyword",
+          "settings": {
+            "foreground": "#000000"
+          }
+        },
+        {
+          "scope": [
+            "entity.name.function",
+            "support.function"
+          ],
+          "settings": {
+            // "foreground": "#F200FF"
+            "foreground": "#f200ff"
+          }
+        },
+        {
+          "scope": [
+            "variable",
+            "entity.name"
+          ],
+          "settings": {
+            "foreground": "#00FFFF"
+          }
+        },
+        {
+          "scope": "variable.parameter",
+          "settings": {
+            // "foreground": "#00f5fd" #00CAD1
+            "foreground": "#77ecf0"
+          }
+        },
+        // {
+        //   "scope": "comment",
+        //   "settings": {
+        //     "foreground": "#00FFFF"
+        //   }
+        // },
+        {
+          "scope": [
+            "punctuation.definition.list.begin",
+            "punctuation.definition.list.end",
+            "punctuation.definition.dict.begin",
+            "punctuation.definition.dict.end",
+            "punctuation.section"
+          ],
+          "settings": {
+            "foreground": "#FF69B4"
+          }
+        },
+        {
+          "scope": "keyword.operator",
+          "settings": {
+            "foreground": "#00B7EB"
+          }
+        },
+        {
+          "scope": [
+            "variable.other.constant",
+            // "constant.other"
+          ],
+          "settings": {
+            // "foreground": "#00ff88", 
+            // "foreground": "#FF00FF", // magenta
+            // "foreground": "#FF00FF",
+            "foreground": "#71ffbd",
+            "fontStyle": "bold"
+          }
+        },
+        {
+          "scope": [
+            "variable.other.readwrite",
+            // "variable.other",
+            "constant.numeric",
+            "constant.language"
+          ],
+          "settings": {
+            // "foreground": "#fd0098" #
+            "foreground": "#ff0c9e"
+          }
+        },
+        {
+          "scope": [
+            "keyword.other.important",
+            "keyword.other.important.css"
+          ],
+          "settings": {
+            "foreground": "#3fafd1", // Cor visível (laranja, por exemplo)
+            "fontStyle": "bold"
+          }
+        },
+        {
+          "scope": "keyword.other.definition.ini",
+          "settings": {
+            "foreground": "#33ff00" // Use uma cor visível no seu fundo, por exemplo: amarelo
+          }
+        },
+        {
+          "scope": "keyword.other.using.directive.cpp",
+          "settings": {
+            "foreground": "#11c7f5", // cor que você quiser
+            // "fontStyle": "bold"
+          }
+        },
+        {
+          "scope": [
+            "entity.name.tag.html",
+            // "meta.tag.object.img.void.html",
+            // "text.html.derivative",
+          ],
+          "settings": {
+            "foreground": "#F04F6A", // cor que você quiser
+            "fontStyle": "bold"
+          }
+        },
+        {
+          "scope": [
+            "entity.name.tag.js.jsx",
+            // "meta.tag.object.img.void.html",
+            // "text.html.derivative",
+          ],
+          "settings": {
+            "foreground": "#F04F6A", // cor que você quiser
+            "fontStyle": "bold"
+          }
+        },
+        {
+          "scope": [
+            // "punctuation.definition.tag.end.html",
+            // "meta.tag.structure.div.start.html",
+            "punctuation.definition.tag",
+          ],
+          "settings": {
+            "foreground": "#ffffff", // "#77d2fc", // cor que você quiser
+            "fontStyle": "bold"
+          }
+        },
+        {
+          "scope": [
+            // "punctuation.definition.tag.end.html",
+            // "meta.tag.structure.div.start.html",
+            "entity.other.attribute-name.html",
+          ],
+          "settings": {
+            "foreground": "#ffffff", // cor que você quiser
+            // "fontStyle": "bold" 
+          }
+        },
+        {
+          "scope": [
+            // "punctuation.definition.tag.end.html",
+            // "meta.tag.structure.div.start.html",
+            "entity.other.attribute-name.js",
+          ],
+          "settings": {
+            "foreground": "#e4b841", // cor que você quiser
+            // "fontStyle": "bold" 
+          }
+        }
+      ]
+    }
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "workbench.activityBar.location": "hidden",
+  "diffEditor.ignoreTrimWhitespace": true,
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "github.copilot.nextEditSuggestions.enabled": false,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "cpp": false
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "C_Cpp.clang_format_fallbackStyle": "Visual Studio", //Format CPP if () {}"{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}", 
+  "workbench.colorCustomizations": {},
+  "workbench.settings.applyToAllProfiles": [
+    "workbench.colorCustomizations"
+  ],
+  "workbench.colorTheme": "Kolada",
+  "glassit.alpha": 180,
+  // "workbench.colorCustomizations": {
+  //   // "gitDecoration.modifiedResourceForeground": "#FF8800",   // arquivos modificados
+  //   "gitDecoration.addedResourceForeground": "#00DD88",      // arquivos adicionados
+  //   "gitDecoration.deletedResourceForeground": "#FF0000",    // arquivos excluídos
+  //   "gitDecoration.untrackedResourceForeground": "#AAAAAA",  // arquivos não rastreados
+  //   "gitDecoration.renamedResourceForeground": "#00AAFF",     // arquivos renomeados
+  //   "gitDecoration.": "#af8bff"
+  // }
+}

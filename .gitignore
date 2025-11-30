@@ -1,0 +1,58 @@
+# ==========================
+# IGNORAR REPOS EMBUTIDOS
+# ==========================
+alacritty/.config/alacritty/themes/
+nvim/.config/nvim/
+tmux/.tmux/plugins/
+
+# ==========================
+# IGNORAR LIXO GERAL
+# ==========================
+*.swp
+*.tmp
+*.log
+*~
+*.bak
+
+# ==========================
+# IGNORAR CACHES COMUNS
+# ==========================
+.cache/
+__pycache__/
+Session.vim
+tags
+
+# ==========================
+# IGNORAR ARQUIVOS DO STOW
+# ==========================
+.stow-local-ignore
+
+# ==========================
+# IGNORAR ARQUIVOS DO SISTEMA
+# ==========================
+.DS_Store
+Thumbs.db
+
+# ==========================
+# IGNORAR CONFIGS QUE SE REGERAM
+# ==========================
+vscode/CachedData/
+vscode/Code\ Cache/
+vscode/Backups/
+vscode/User/globalStorage/
+
+# ==========================
+# IGNORAR HISTÓRICO SENSÍVEL
+# ==========================
+.zsh_history
+.bash_history
+.fish_history
+
+# ==========================
+# IGNORAR TOKENS OU CREDENCIAIS
+# ==========================
+*.env
+*.secret
+*.token
+*.pem
+*.key
