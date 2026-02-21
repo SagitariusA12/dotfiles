@@ -105,10 +105,10 @@
     ".monaco-workbench .monaco-list:not(.element-focused):focus:before": "display: none;"
   },
   "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "prettier.printWidth": 80,
   "prettier.jsxSingleQuote": true,
@@ -243,6 +243,7 @@
         {
           "scope": [
             "entity.name.tag.html",
+            "entity.name.tag"
             // "meta.tag.object.img.void.html",
             // "text.html.derivative",
           ],
@@ -299,7 +300,7 @@
     }
   },
   "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features"
+    "editor.defaultFormatter": "vscode.html-language-features",
   },
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
