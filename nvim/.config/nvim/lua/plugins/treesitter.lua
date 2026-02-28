@@ -9,7 +9,6 @@ return {
 		},
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				-- Linguagens instaladas
 				ensure_installed = {
 					"html",
 					"javascript",
@@ -21,23 +20,21 @@ return {
 					"markdown",
 					"typescript",
 					"tsx",
+					"c",
 				},
-				-- Ativar highlight e indentação
 				highlight = {
 					enable = true,
-					additional_vim_regex_highlighting = { "markdown" }, -- Para melhor suporte a markdown
+					additional_vim_regex_highlighting = { "markdown" },
 				},
 				indent = {
 					enable = true,
-					disable = { "python" }, -- Python tem indentação própria que pode conflitar
+					disable = { "python" },
 				},
-				-- Instalar parsers automaticamente
 				auto_install = true,
-				-- Configuração do textobjects
 				textobjects = {
 					select = {
 						enable = true,
-						lookahead = true, -- Move automaticamente para o próximo textobject
+						lookahead = true,
 						keymaps = {
 							["at"] = { query = "@tag.outer", desc = "Select around tag" },
 							["it"] = { query = "@tag.inner", desc = "Select inner tag" },
@@ -46,10 +43,9 @@ return {
 							["av"] = { query = "@attribute.value", desc = "Select attribute value" },
 							["ix"] = { query = "@text.inner", desc = "Select inner text" },
 						},
-						-- Seleção incremental para alternar entre diferentes textobjects
 						selection_modes = {
-							["@tag.outer"] = "V", -- Usa modo linha para tags completas
-							["@tag.inner"] = "v", -- Usa modo caractere para conteúdo interno
+							["@tag.outer"] = "V",
+							["@tag.inner"] = "v",
 							["@tag.name"] = "v",
 							["@attribute.name"] = "v",
 							["@attribute.value"] = "v",
@@ -58,7 +54,7 @@ return {
 					},
 					move = {
 						enable = true,
-						set_jumps = true, -- Adiciona movimentos ao jumplist
+						set_jumps = true,
 						goto_next_start = {
 							["]t"] = { query = "@tag.outer", desc = "Next tag start" },
 							["]a"] = { query = "@attribute.name", desc = "Next attribute start" },
@@ -90,15 +86,9 @@ return {
 				},
 			})
 
-			-- Configuração do jump-tag
-			vim.keymap.set("n", "t<C-d>", ":JumpTagJump<CR>", { desc = "Jump to matching tag" })
-			vim.keymap.set("i", "<C-t>", "<Esc>:JumpTagInsert<CR>a", { desc = "Insert closing tag" })
-			vim.keymap.set("n", "<leader>jt", ":JumpTagJump<CR>", { desc = "Jump to matching tag" })
-			vim.keymap.set("n", "<leader>ct", ":JumpTagInsert<CR>", { desc = "Insert closing tag" })
-
-			-- Atalhos adicionais para navegação rápida
-			vim.keymap.set("n", "<leader>tn", "]t", { desc = "Go to next tag", remap = true })
-			vim.keymap.set("n", "<leader>tp", "[t", { desc = "Go to previous tag", remap = true })
+			-- Atalhos de navegação de tags (sem conflitar com toggleterm <leader>tn)
+			vim.keymap.set("n", "<leader>tj", "]t", { desc = "Go to next tag", remap = true })
+			vim.keymap.set("n", "<leader>tk", "[t", { desc = "Go to previous tag", remap = true })
 		end,
 	},
 }

@@ -10,10 +10,10 @@ return {
 
 		null_ls.setup({
 			sources = {
-				-- ✅ Lua
+				-- Lua
 				null_ls.builtins.formatting.stylua,
 
-				-- ✅ HTML, CSS, JS, TS...
+				-- HTML, CSS, JS, TS...
 				null_ls.builtins.formatting.prettier.with({
 					filetypes = {
 						"javascript",
@@ -28,16 +28,16 @@ return {
 					},
 				}),
 
-				-- ✅ Python
+				-- Python
 				null_ls.builtins.formatting.black,
 
-				-- ✅ Django Templates (HTML + {% %} + {{ }})
+				-- Django Templates
 				null_ls.builtins.formatting.djlint.with({
 					filetypes = { "html", "django", "htmldjango" },
 					extra_args = { "--profile=django", "--indent=4" },
 				}),
 
-				-- ✅ Lint: ESLint
+				-- Lint: ESLint
 				require("none-ls.diagnostics.eslint_d").with({
 					filetypes = {
 						"javascript",
@@ -48,11 +48,10 @@ return {
 				}),
 			},
 
-			-- ✅ Formatar ao salvar
+			-- Formatar ao salvar
 			on_attach = function(client, bufnr)
 				if client:supports_method("textDocument/formatting") then
-					local group = vim.api.nvim_create_augroup("NullLsFormatting", { clear = true })
-					vim.api.nvim_clear_autocmds({ group = group, buffer = bufnr })
+					local group = vim.api.nvim_create_augroup("NullLsFormatting_" .. bufnr, { clear = true })
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						group = group,
 						buffer = bufnr,
@@ -66,7 +65,7 @@ return {
 			end,
 		})
 
-		-- ✅ Formatador manual
+		-- Formatador manual
 		vim.keymap.set("n", "<leader>gl", function()
 			if vim.fn.bufname() ~= "" and vim.bo.buftype == "" then
 				vim.lsp.buf.format({ async = false })
@@ -74,14 +73,5 @@ return {
 				print("Erro: Nenhum arquivo válido para formatação")
 			end
 		end, { desc = "Formatar arquivo" })
-
-		-- ✅ Correções automáticas ESLint
-		vim.keymap.set("n", "<leader>ca", function()
-			if vim.fn.bufname() ~= "" and vim.bo.buftype == "" then
-				vim.lsp.buf.code_action()
-			else
-				print("Erro: Nenhum arquivo válido para correções")
-			end
-		end, { desc = "Aplicar correções de código (eslint_d)" })
 	end,
 }

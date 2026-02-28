@@ -29,58 +29,58 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			local servers = {
-				lua_ls = {},
-				ts_ls = {},
-				pyright = {},
-				html = {},
-				cssls = {},
-				clangd = {},
-				jsonls = {},
-				bashls = {},
-			}
+			-- Nova API: vim.lsp.config + vim.lsp.enable (nvim 0.11+)
+			-- Não usa mais require("lspconfig")[server].setup()
+			vim.lsp.config("lua_ls", {
+				capabilities = capabilities,
+				settings = {
+					Lua = {
+						diagnostics = { globals = { "vim" } },
+						workspace = { checkThirdParty = false },
+						telemetry = { enable = false },
+					},
+				},
+			})
 
-			if vim.lsp.start then
-				-- Neovim 0.11+ (nova API)
-				for name, config in pairs(servers) do
-					local final_config = vim.tbl_deep_extend("force", {
-						capabilities = capabilities,
-					}, config)
+			vim.lsp.config("ts_ls",   { capabilities = capabilities })
+			vim.lsp.config("pyright", { capabilities = capabilities })
+			vim.lsp.config("html",    { capabilities = capabilities })
+			vim.lsp.config("cssls",   { capabilities = capabilities })
+			vim.lsp.config("clangd",  { capabilities = capabilities })
+			vim.lsp.config("jsonls",  { capabilities = capabilities })
+			vim.lsp.config("bashls",  { capabilities = capabilities })
 
-					local lsp_conf = vim.lsp.config(name, final_config)
-					if lsp_conf then
-						vim.lsp.start(lsp_conf)
-					end
-				end
-			else
-				-- Fallback para Neovim <= 0.10
-				local lspconfig = require("lspconfig")
-				for name, config in pairs(servers) do
-					config.capabilities = capabilities
-					lspconfig[name].setup(config)
-				end
-			end
+			-- Ativa todos os servidores configurados
+			vim.lsp.enable({
+				"lua_ls", "ts_ls", "pyright",
+				"html", "cssls", "clangd", "jsonls", "bashls",
+			})
 
-			-- Keymaps LSP
-			local opts = { noremap = true, silent = true }
-			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-			vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-			vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-			vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-			vim.keymap.set("n", "<space>wl", function()
-				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-			end, opts)
-			vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-			vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-			vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-			vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-			vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-			vim.keymap.set("n", "<C-y>", vim.lsp.codelens.run, opts)
+			-- Keymaps LSP — só ativados em buffers com LSP anexado
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
+				callback = function(ev)
+					local opts = { buffer = ev.buf, noremap = true, silent = true }
+					vim.keymap.set("n", "gD",         vim.lsp.buf.declaration,             opts)
+					vim.keymap.set("n", "gd",         vim.lsp.buf.definition,              opts)
+					vim.keymap.set("n", "K",          vim.lsp.buf.hover,                   opts)
+					vim.keymap.set("n", "gi",         vim.lsp.buf.implementation,          opts)
+					vim.keymap.set("n", "<C-k>",      vim.lsp.buf.signature_help,          opts)
+					vim.keymap.set("n", "<space>D",   vim.lsp.buf.type_definition,         opts)
+					vim.keymap.set("n", "<space>rn",  vim.lsp.buf.rename,                  opts)
+					vim.keymap.set("n", "gr",         vim.lsp.buf.references,              opts)
+					vim.keymap.set("n", "<space>e",   vim.diagnostic.open_float,           opts)
+					vim.keymap.set("n", "[d",         vim.diagnostic.goto_prev,            opts)
+					vim.keymap.set("n", "]d",         vim.diagnostic.goto_next,            opts)
+					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action,             opts)
+					vim.keymap.set("n", "<C-y>",      vim.lsp.codelens.run,                opts)
+					vim.keymap.set("n", "<space>wa",  vim.lsp.buf.add_workspace_folder,    opts)
+					vim.keymap.set("n", "<space>wr",  vim.lsp.buf.remove_workspace_folder, opts)
+					vim.keymap.set("n", "<space>wl",  function()
+						print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+					end, opts)
+				end,
+			})
 		end,
 	},
 }

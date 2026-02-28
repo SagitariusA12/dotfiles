@@ -8,23 +8,20 @@ return {
 		local alpha = require("alpha")
 		local dashboard = require("alpha.themes.dashboard")
 
-		dashboard.section.header.val = {
-			[[                                    ██████                                    ]],
-			[[                                ████▒▒▒▒▒▒████                                ]],
-			[[                              ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                              ]],
-			[[                            ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                            ]],
-			[[                          ██▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒                              ]],
-			[[                          ██▒▒▒▒▒▒  ▒▒▓▓▒▒▒▒▒▒  ▓▓▓▓                          ]],
-			[[                          ██▒▒▒▒▒▒  ▒▒▓▓▒▒▒▒▒▒  ▒▒▓▓                          ]],
-			[[                        ██▒▒▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒    ██                        ]],
-			[[                        ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                        ]],
-			[[                        ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                        ]],
-			[[                        ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                        ]],
-			[[                        ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                        ]],
-			[[                        ██▒▒██▒▒▒▒▒▒██▒▒▒▒▒▒▒▒██▒▒▒▒██                        ]],
-			[[                        ████  ██▒▒██  ██▒▒▒▒██  ██▒▒██                        ]],
-			[[                        ██      ██      ████      ████                        ]],
-		}
+		-- importa banners
+		local banners = require("tables.banners")
+
+		-- seed realmente aleatória
+		math.randomseed(vim.loop.hrtime())
+
+		-- pega chaves
+		local keys = vim.tbl_keys(banners)
+
+		-- escolhe uma
+		local random_banner = banners[keys[math.random(#keys)]]
+
+		-- aplica
+		dashboard.section.header.val = random_banner
 
 		dashboard.section.buttons.val = {
 			dashboard.button("n", "  Novo arquivo", ":ene <BAR> startinsert <CR>"),
