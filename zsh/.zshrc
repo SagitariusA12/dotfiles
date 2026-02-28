@@ -171,3 +171,18 @@ copyfile() {
 
 export DOCKER_HOST=unix:///var/run/docker.sock
 export PATH="$HOME/.local/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/home/sagittarius/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# bun completions
+[ -s "/home/sagittarius/.bun/_bun" ] && source "/home/sagittarius/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -307,7 +307,6 @@
   },
   "workbench.activityBar.location": "hidden",
   "diffEditor.ignoreTrimWhitespace": true,
-  "diffEditor.hideUnchangedRegions.enabled": true,
   "github.copilot.nextEditSuggestions.enabled": false,
   "github.copilot.enable": {
     "*": false,
@@ -324,8 +323,10 @@
   "workbench.settings.applyToAllProfiles": [
     "workbench.colorCustomizations"
   ],
-  "workbench.colorTheme": "Kolada",
   "glassit.alpha": 180,
+  "console-ninja.featureSet": "Community",
+  "workbench.colorTheme": "Kolada",
+  "workbench.productIconTheme": "fluent-icons",
   // "workbench.colorCustomizations": {
   //   // "gitDecoration.modifiedResourceForeground": "#FF8800",   // arquivos modificados
   //   "gitDecoration.addedResourceForeground": "#00DD88",      // arquivos adicionados
