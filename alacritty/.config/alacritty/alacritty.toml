@@ -1,17 +1,29 @@
+# =============================================================
+# ~/.config/alacritty/alacritty.toml
+# =============================================================
+
 [general]
 import = [
     "~/.config/alacritty/themes/themes/monokai_charcoal.toml"
 ]
 
+# ── Shell ─────────────────────────────────────────────────────
 [terminal.shell]
 program = "/usr/bin/tmux"
 args = ["new-session", "-A", "-s", "main"]
 
+# ── Cursor ────────────────────────────────────────────────────
 [cursor]
 style = { shape = "Block", blinking = "On" }
+blink_interval = 500          # ms entre piscadas (padrão 750, mais suave)
+blink_timeout = 10            # para de piscar após 10s de inatividade
+unfocused_hollow = true       # cursor vazio quando janela perde foco
 
+# ── Fonte ─────────────────────────────────────────────────────
 [font]
 size = 12
+builtin_box_drawing = true    # caracteres de box drawing nítidos (linhas tmux)
+offset = { x = 0, y = 1 }    # espaçamento vertical entre linhas
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
@@ -29,38 +41,89 @@ style = "Italic"
 family = "JetBrainsMono Nerd Font"
 style = "Bold Italic"
 
+# ── Mouse ─────────────────────────────────────────────────────
 [mouse]
 hide_when_typing = true
+bindings = [
+    { mouse = "Middle", action = "PasteSelection" },  # colar com clique do meio
+]
 
+# ── Seleção ───────────────────────────────────────────────────
+[selection]
+save_to_clipboard = false     # seleção vai para primary, não clipboard
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"  # double-click seleciona tokens úteis
+
+# ── Scrolling ─────────────────────────────────────────────────
 [scrolling]
 history = 10000
-multiplier = 3
+multiplier = 5                # era 3 → scroll mais ágil
 
+# ── Janela ────────────────────────────────────────────────────
 [window]
 decorations = "none"
 decorations_theme_variant = "Dark"
 dynamic_padding = true
 opacity = 0.8
 title = "Alacritty"
-padding = { x = 10, y = 10 }
+padding = { x = 0, y = 0 }
+dynamic_title = true          # título muda conforme o processo ativo
 
 [window.class]
-general = "Alacritty"
+general  = "Alacritty"
 instance = "Alacritty"
 
 [window.dimensions]
 columns = 100
 lines = 30
 
+# ── Atalhos ───────────────────────────────────────────────────
 [[keyboard.bindings]]
-key = "F11"
+key    = "F11"
 action = "ToggleFullscreen"
 
 [[keyboard.bindings]]
-key = "F10"
+key    = "F10"
 action = "ToggleMaximized"
 
 [[keyboard.bindings]]
-key = "L"
-mods = "Control"
+key   = "L"
+mods  = "Control"
 chars = "clear\n"
+
+# Aumentar/diminuir fonte
+[[keyboard.bindings]]
+key   = "Plus"
+mods  = "Control"
+action = "IncreaseFontSize"
+
+[[keyboard.bindings]]
+key   = "Minus"
+mods  = "Control"
+action = "DecreaseFontSize"
+
+[[keyboard.bindings]]
+key   = "Key0"
+mods  = "Control"
+action = "ResetFontSize"
+
+# Scroll via teclado
+[[keyboard.bindings]]
+key   = "PageUp"
+mods  = "Shift"
+action = "ScrollPageUp"
+
+[[keyboard.bindings]]
+key   = "PageDown"
+mods  = "Shift"
+action = "ScrollPageDown"
+
+[[keyboard.bindings]]
+key   = "Home"
+mods  = "Shift"
+action = "ScrollToTop"
+
+[[keyboard.bindings]]
+key   = "End"
+mods  = "Shift"
+action = "ScrollToBottom"
+# =============================================================

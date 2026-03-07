@@ -12,6 +12,9 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
 	import = "plugins",
+	defaults = {
+		lazy = true,
+	},
 	install = {
 		colorscheme = { "cyberdream" },
 	},
