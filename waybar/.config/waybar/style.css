@@ -1,0 +1,350 @@
+/* ╔══════════════════════════════════════════════════════════════╗ */
+/* ║           WAYBAR — NEON ARCADE THEME                         ║ */
+/* ║           1366x768 · Muitas cores · Compacto                 ║ */
+/* ╚══════════════════════════════════════════════════════════════╝ */
+
+* {
+    font-family: "FiraCode Nerd Font", "JetBrains Mono", monospace;
+    font-size: 12px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+}
+
+/* ── ICON-DISTRO ─────────────────────────────────────────────── */
+#custom-distro-icon {
+    color: #00e5ff;
+    background-color: #09090f;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    padding: 2px 18px 2px 15px;
+    margin-top: 6px;
+    margin-right: 5px;
+    font-size: 16px;
+    box-shadow: 0 0 3px rgba(0, 229, 255, 0.12);
+}
+
+/* ── WORKSPACES ─────────────────────────────────────────────── */
+#workspaces {
+    margin-top: 6px;
+    margin-right: 6px;
+}
+
+#workspaces button {
+    color: #00e5ff;
+    background-color: #09090f;
+    margin-right: 5px;
+    border-radius: 12px;
+    box-shadow:
+        0 0 3px rgba(0, 229, 255, 0.12),
+        1px 1px 3px rgba(0, 0, 0, 0.3);
+    padding: 2px 10px;
+    font-weight: 900;
+    font-size: 16px;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+}
+
+#workspaces button:hover {
+    color: #ff00ff;
+    background-color: rgba(255, 0, 255, 0.12);
+    border-color: rgba(255, 0, 255, 0.4);
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.35);
+}
+
+/* Pacman ativo — gradiente neon */
+#workspaces button.active {
+    background-image: linear-gradient(135deg, #f38ba8 0%, #cba6f7 100%);
+    color: #09090f;
+    margin-right: 5px;
+    border-radius: 12px;
+    font-weight: 900;
+    font-size: 15px;
+    box-shadow:
+        0 0 6px rgba(0, 229, 255, 0.25),
+        0 0 4px rgba(255, 0, 255, 0.2);
+    border: none;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+}
+
+#workspaces button.urgent {
+    color: #ff0055;
+    background-color: rgba(255, 0, 85, 0.18);
+    border-color: rgba(255, 0, 85, 0.55);
+    box-shadow: 0 0 12px rgba(255, 0, 85, 0.45);
+    font-size: 14px;
+}
+
+/* ── BASE COMPARTILHADA ─────────────────────────────────────── */
+#window,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#battery,
+#custom-media,
+#custom-weather,
+#power-profiles-daemon,
+#keyboard-state,
+#idle-inhibitor,
+#mpd {
+    background-color: #09090f;
+    margin-right: 4px;
+    border-radius: 12px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    padding: 2px 10px;
+    font-weight: 700;
+    margin-top: 6px;
+}
+
+/* ── CORES INDIVIDUAIS ──────────────────────────────────────── */
+#cpu {
+    color: #ff00ff;
+    border: 1px solid rgba(255, 0, 255, 0.25);
+    box-shadow: 0 0 7px rgba(255, 0, 255, 0.2);
+}
+
+#memory {
+    color: #00e5ff;
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    box-shadow: 0 0 7px rgba(0, 229, 255, 0.2);
+}
+
+#temperature {
+    color: #00ff88;
+    border: 1px solid rgba(0, 255, 136, 0.25);
+    box-shadow: 0 0 7px rgba(0, 255, 136, 0.2);
+}
+
+#temperature.critical {
+    color: #ff0055;
+    background-color: rgba(255, 0, 85, 0.15);
+    border-color: rgba(255, 0, 85, 0.45);
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.35);
+}
+
+#network {
+    color: #ff6b00;
+    border: 1px solid rgba(255, 107, 0, 0.25);
+    box-shadow: 0 0 7px rgba(255, 107, 0, 0.2);
+}
+
+#network.disconnected {
+    color: #ff0055;
+    border-color: rgba(255, 0, 85, 0.4);
+}
+
+#pulseaudio {
+    color: #bf00ff;
+    border: 1px solid rgba(191, 0, 255, 0.25);
+    box-shadow: 0 0 7px rgba(191, 0, 255, 0.2);
+}
+
+#pulseaudio.muted {
+    color: #444455;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+#battery {
+    color: #00ff88;
+    border: 1px solid rgba(0, 255, 136, 0.25);
+    box-shadow: 0 0 7px rgba(0, 255, 136, 0.2);
+}
+
+#battery.charging {
+    color: #00e5ff;
+    border-color: rgba(0, 229, 255, 0.35);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+}
+
+#battery.warning:not(.charging) {
+    color: #ffcc00;
+    border-color: rgba(255, 204, 0, 0.35);
+}
+
+#battery.critical:not(.charging) {
+    color: #ff0055;
+    border-color: rgba(255, 0, 85, 0.5);
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.35);
+}
+
+#keyboard-state {
+    color: #ff6b00;
+    border: 1px solid rgba(255, 107, 0, 0.2);
+}
+
+#keyboard-state>label.locked {
+    color: #ffcc00;
+    padding: 0 4px;
+    border-radius: 4px;
+    background-color: rgba(255, 204, 0, 0.12);
+}
+
+#idle-inhibitor {
+    color: #444455;
+    border: 1px solid transparent;
+}
+
+#idle-inhibitor.activated {
+    color: #00e5ff;
+    border-color: rgba(0, 229, 255, 0.3);
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.25);
+}
+
+#power-profiles-daemon {
+    font-size: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#power-profiles-daemon.performance {
+    color: #ff0055;
+    border-color: rgba(255, 0, 85, 0.3);
+}
+
+#power-profiles-daemon.balanced {
+    color: #00ff88;
+    border-color: rgba(0, 255, 136, 0.25);
+}
+
+#power-profiles-daemon.power-saver {
+    color: #00e5ff;
+    border-color: rgba(0, 229, 255, 0.25);
+}
+
+#mpd {
+    color: #bf00ff;
+    font-size: 11px;
+    border: 1px solid rgba(191, 0, 255, 0.2);
+}
+
+#mpd.disconnected,
+#mpd.stopped {
+    color: #333344;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+#custom-media {
+    color: #ff00ff;
+    font-size: 11px;
+    border: 1px solid rgba(255, 0, 255, 0.2);
+}
+
+#custom-media.spotify {
+    color: #00ff88;
+    border-color: rgba(0, 255, 136, 0.3);
+    box-shadow: 0 0 7px rgba(0, 255, 136, 0.2);
+}
+
+#custom-weather {
+    color: #00e5ff;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    padding: 4px 10px 2px 10px;
+    margin-left: 4px;
+}
+
+/* ── CLOCK ──────────────────────────────────────────────────── */
+#clock {
+    background-image: linear-gradient(135deg, #00e5ff 0%, #bf00ff 100%);
+    color: #09090f;
+    font-weight: 900;
+    padding: 2px 12px;
+    margin-top: 6px;
+    margin-right: 6px;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.45);
+}
+
+/* ── WINDOW ─────────────────────────────────────────────────── */
+#window {
+    color: #ff6b00;
+    border: 1px solid rgba(255, 107, 0, 0.22);
+    box-shadow: 0 0 7px rgba(255, 107, 0, 0.15);
+    font-style: italic;
+}
+
+#window.empty {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+/* ── TRAY ───────────────────────────────────────────────────── */
+#tray {
+    background-color: #09090f;
+    margin-right: 4px;
+    border-radius: 12px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    padding: 2px 8px;
+    margin-top: 6px;
+    min-width: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+#tray>.passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+/* ── POWER BUTTON ───────────────────────────────────────────── */
+#custom-power {
+    color: #ff0055;
+    background-color: #09090f;
+    margin-right: 8px;
+    margin-left: 2px;
+    border-radius: 12px;
+    box-shadow:
+        0 0 8px rgba(255, 0, 85, 0.25),
+        2px 2px 4px rgba(0, 0, 0, 0.4);
+    padding: 2px 10px;
+    font-weight: 700;
+    margin-top: 6px;
+    font-size: 14px;
+    border: 1px solid rgba(255, 0, 85, 0.3);
+}
+
+#custom-power:hover {
+    color: #09090f;
+    background-image: linear-gradient(135deg, #ff0055, #ff00ff);
+    box-shadow: 0 0 16px rgba(255, 0, 85, 0.6);
+    border-color: transparent;
+}
+
+/* ── SUBMAP ─────────────────────────────────────────────────── */
+#submap {
+    color: #ffcc00;
+    background-color: #09090f;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(255, 204, 0, 0.25);
+    padding: 2px 10px;
+    font-weight: 700;
+    margin-top: 6px;
+    font-style: italic;
+    border: 1px solid rgba(255, 204, 0, 0.35);
+}
+
+/* ── SCRATCHPAD ─────────────────────────────────────────────── */
+#scratchpad {
+    color: #00e5ff;
+    background-color: #09090f;
+    border-radius: 12px;
+    padding: 2px 10px;
+    margin-top: 6px;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+}
+
+#scratchpad.empty {
+    opacity: 0;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+}

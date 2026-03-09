@@ -1,0 +1,317 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top",
+    "height": 34,
+    "spacing": 3,
+    "margin": "5 10 0 10",
+    "exclusive": true,
+
+    // ── GRUPOS ──────────────────────────────────────────────────
+    "group/timeweather": {
+        "orientation": "horizontal",
+        "modules": [
+            "clock",
+            "custom/weather"
+        ]
+    },
+
+    // ── MÓDULOS ─────────────────────────────────────────────────
+    "modules-left": [
+        "custom/distro-icon",
+        "hyprland/workspaces",
+        "hyprland/submap",
+        "sway/scratchpad",
+        "custom/media"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "mpd",
+        "idle_inhibitor",
+        "pulseaudio",
+        "network",
+        "power-profiles-daemon",
+        "cpu",
+        "memory",
+        "temperature",
+        "keyboard-state",
+        "sway/language",
+        "battery",
+        "battery#bat2",
+        "group/timeweather",
+        "tray",
+        "custom/power"
+    ],
+
+    // ── DISTRO ICON ──────────────────────────────────────────────
+    "custom/distro-icon": {
+        "format": "{}",
+        "interval": "once",
+        "tooltip": false,
+        "exec": "$HOME/.config/waybar/scripts/distro-icon.sh"
+    },
+
+    // ── WORKSPACES ───────────────────────────────────────────────
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{icon}",
+        "format-icons": {
+            "active": "ᗤ",
+            "default": "󱙝",
+            "urgent": "󰀦"
+        },
+        "window-rewrite": {
+            "title<.*youtube.*>": "",
+            "class<firefox>": "",
+            "class<firefox> title<.*github.*>": "",
+            "foot": "",
+            "code": "󰨞"
+        },
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+
+    // ── WINDOW TITLE ─────────────────────────────────────────────
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 40,
+        "separate-outputs": true,
+        "icon": true,
+        "icon-size": 16,
+        "tooltip": true,
+        "on-click": "dunstify \"$(hyprctl activewindow -j | jq -r .title)\""
+    },
+
+    // ── SUBMAP ───────────────────────────────────────────────────
+    "hyprland/submap": {
+        "format": "<span style=\"italic\">{}</span>",
+        "tooltip": false
+    },
+
+    // ── SCRATCHPAD ───────────────────────────────────────────────
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": [ "", "" ],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+
+    // ── LANGUAGE ─────────────────────────────────────────────────
+    "sway/language": {
+        "format": " {}",
+        "min-length": 5,
+        "tooltip": false
+    },
+
+    // ── KEYBOARD STATE ───────────────────────────────────────────
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "󰌾",
+            "unlocked": "󰍁"
+        }
+    },
+
+    // ── MPD ──────────────────────────────────────────────────────
+    "mpd": {
+        "format": "{stateIcon} {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) {volume}% ",
+        "format-disconnected": "󰝛 Desconectado",
+        "format-stopped": "󰝛 Parado",
+        "unknown-tag": "N/A",
+        "interval": 5,
+        "consume-icons": { "on": "󰮯 " },
+        "random-icons": {
+            "off": "<span color=\"#ff0055\">󰒞</span> ",
+            "on": "󰒝 "
+        },
+        "repeat-icons": { "on": "󰑖 " },
+        "single-icons": { "on": "󰑘 " },
+        "state-icons": {
+            "paused": "󰏤",
+            "playing": "󰐊"
+        },
+        "max-length": 50,
+        "tooltip-format": "MPD · {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}",
+        "tooltip-format-disconnected": "MPD desconectado"
+    },
+
+    // ── IDLE INHIBITOR ───────────────────────────────────────────
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰅶",
+            "deactivated": "󰾪"
+        },
+        "tooltip": true,
+        "tooltip-format-activated": "Idle inibido",
+        "tooltip-format-deactivated": "Idle ativo"
+    },
+
+    // ── PULSEAUDIO ───────────────────────────────────────────────
+    "pulseaudio": {
+        "scroll-step": 2,
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% 󰂰 {format_source}",
+        "format-bluetooth-muted": "󰂲 {format_source}",
+        "format-muted": "󰖁 {format_source}",
+        "format-source": "{volume}% 󰍬",
+        "format-source-muted": "󰍭",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󰋋",
+            "headset": "󰋎",
+            "phone": "󰏲",
+            "portable": "󰏲",
+            "car": "󰄋",
+            "default": [ "󰕿", "󰖀", "󰕾" ]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "tooltip": true
+    },
+
+    // ── NETWORK ──────────────────────────────────────────────────
+    "network": {
+        "format-wifi": "󰤨 {essid} {signalStrength}%",
+        "format-ethernet": "󰈀 {ipaddr}",
+        "format-linked": "󰈀 {ifname} (sem IP)",
+        "format-disconnected": "󰤭 Desconectado",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "󰤨 {ifname} via {gwaddr}\nIP: {ipaddr}\nForça: {signalStrength}%",
+        "interval": 5,
+        "on-click-right": "nm-connection-editor"
+    },
+
+    // ── POWER PROFILES ───────────────────────────────────────────
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Perfil: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "󱐋",
+            "performance": "󱐋",
+            "balanced": "󰗑",
+            "power-saver": "󰌪"
+        }
+    },
+
+    // ── CPU ───────────────────────────────────────────────────────
+    "cpu": {
+        "format": "{usage}% 󰻠",
+        "tooltip-format": "CPU: {usage}%\nFreq: {avg_frequency} GHz",
+        "tooltip": true,
+        "interval": 5,
+        "on-click": "foot -e btop"
+    },
+
+    // ── MEMORY ───────────────────────────────────────────────────
+    "memory": {
+        "format": "{percentage}% 󰍛",
+        "tooltip-format": "RAM: {used} / {total} GiB\nSwap: {swapUsed} / {swapTotal} GiB",
+        "tooltip": true,
+        "interval": 10,
+        "on-click": "foot -e btop"
+    },
+
+    // ── TEMPERATURE ──────────────────────────────────────────────
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-critical": "{temperatureC}°C {icon}",
+        "format-icons": [ "󰔄", "󰔄", "󰔅", "󰔆", "󰔇" ],
+        "tooltip": true,
+        "interval": 10
+    },
+
+    // ── BATERIA ───────────────────────────────────────────────────
+    "battery": {
+        "bat": "BAT1",
+        "states": {
+            "full": 100,
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "󰁹 {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": [ "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
+        "tooltip-format": "Bateria: {capacity}%\n{timeTo}",
+        "tooltip": true
+    },
+
+    "battery#bat2": {
+        "bat": "BAT2",
+        "states": {
+            "full": 100,
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "󰁹 {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-icons": [ "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
+        "tooltip": true
+    },
+
+    // ── CLOCK ─────────────────────────────────────────────────────
+    "clock": {
+        "format": "󰥔 {:%a, %d %b  %H:%M}",
+        "format-alt": "{:%A, %d de %B de %Y}",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+        "locale": "pt_BR.UTF-8",
+        "interval": 1,
+        "calendar": {
+            "mode": "month",
+            "on-scroll": 1,
+            "format": {
+                "today": "<span color='#00e5ff'><b>{}</b></span>"
+            }
+        }
+    },
+
+    // ── WEATHER ───────────────────────────────────────────────────
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "interval": 1800,
+        "exec": "$HOME/.config/waybar/scripts/weather.py",
+        "return-type": "json"
+    },
+
+    // ── MEDIA ─────────────────────────────────────────────────────
+    "custom/media": {
+        "format": "{icon} {text}",
+        "return-type": "json",
+        "max-length": 35,
+        "format-icons": {
+            "spotify": "󰓇",
+            "default": "󰎵"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"
+    },
+
+    // ── TRAY ──────────────────────────────────────────────────────
+    "tray": {
+        "icon-size": 14,
+        "spacing": 6
+    },
+
+    // ── POWER ─────────────────────────────────────────────────────
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "wlogout"
+    }
+}
