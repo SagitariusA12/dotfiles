@@ -1,7 +1,6 @@
 return {
 	"echasnovski/mini.surround",
 	version = "*",
-	event = { "BufReadPost", "BufNewFile" },
 	opts = {
 		mappings = {
 			add            = "sa",  -- sa<motion><char> — adicionar envolvimento

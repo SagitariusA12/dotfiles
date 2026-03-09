@@ -1,9 +1,6 @@
 return {
 	"turbio/bracey.vim",
 	-- Força o carregamento ao iniciar arquivos HTML
-	ft = { "html", "htm" },
-	-- Ou use event se preferir
-	-- event = "VeryLazy",
 
 	-- Garante que o build rode na primeira instalação
 	build = function()

@@ -1,6 +1,5 @@
 return {
 	"lewis6991/satellite.nvim",
-	event = "BufReadPost",
 	opts = {
 		current_only = false,
 		winblend     = 50,

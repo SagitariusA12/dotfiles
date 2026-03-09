@@ -1,6 +1,5 @@
 return {
 	"folke/flash.nvim",
-	event = "VeryLazy",
 	opts = {},
 	keys = {
 		-- Salto normal (modo n, x, o)

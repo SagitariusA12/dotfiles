@@ -1,6 +1,5 @@
 return {
 	"windwp/nvim-ts-autotag",
-	event = { "BufReadPost", "BufNewFile" },
 	opts = {
 		opts = {
 			enable_close          = true,   -- fecha tag ao digitar >

@@ -1,13 +1,12 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
+		branch = "0.1.x",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			local telescope = require("telescope")
 			local builtin = require("telescope.builtin")
 			local actions = require("telescope.actions")
-
 			telescope.setup({
 				defaults = {
 					mappings = {
@@ -15,21 +14,20 @@ return {
 							["<esc>"] = actions.close,
 						},
 					},
+					preview = {
+						treesitter = false,
+					},
 				},
 			})
-
-			-- Diretório do arquivo atual
 			local function current_dir()
 				return vim.fn.expand("%:p:h")
 			end
-
 			local function find_local_files()
 				builtin.find_files({
 					cwd = current_dir(),
 					hidden = true,
 				})
 			end
-
 			local function live_grep_local()
 				builtin.live_grep({
 					cwd = current_dir(),
@@ -38,7 +36,6 @@ return {
 					end,
 				})
 			end
-
 			vim.keymap.set("n", "<leader>ff", find_local_files)
 			vim.keymap.set("n", "<leader>fg", live_grep_local)
 			vim.keymap.set("n", "<leader>fb", builtin.buffers)

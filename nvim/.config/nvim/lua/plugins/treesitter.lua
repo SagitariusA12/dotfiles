@@ -2,13 +2,11 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		event = { "BufReadPost", "BufNewFile", "BufWritePre" },
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
-			"harrisoncramer/jump-tag",
 		},
 		config = function()
-			require("nvim-treesitter.configs").setup({
+			require("nvim-treesitter.config").setup({
 				ensure_installed = {
 					"html",
 					"javascript",

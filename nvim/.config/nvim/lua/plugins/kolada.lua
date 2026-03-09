@@ -4,7 +4,6 @@ return {
 	-- Plugin "virtual" apontando para o diretório local da config
 	dir = vim.fn.stdpath("config"),
 	name = "kolada",
-	lazy = false,
 	priority = 1000,
 	config = function()
 		require("themes.kolada").setup()
