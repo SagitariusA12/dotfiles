@@ -1,14 +1,10 @@
 # ~/.zshrc file for zsh interactive shells
-# Rodar neofetch apenas em shells interativos
-# if [[ $- == *i* ]] && command -v neofetch >/dev/null 2>&1; then
-#     neofetch
-# fi
-# Não iniciar tmux dentro do tmux
+
 if [[ -o login ]] && command -v fastfetch &>/dev/null; then
   fastfetch
 fi
 
-### ===| UTILITÁRIOS |=== ####
+### ===| UTILITÁRIOS |=== ###
 eval "$(zoxide init zsh)"
 
 ### === OPÇÕES ZSH === ###
@@ -23,7 +19,7 @@ setopt promptsubst
 WORDCHARS=${WORDCHARS//\/}
 PROMPT_EOL_MARK=""
 
-### === BINDEOS === ###
+### === KEYBINDINGS === ###
 bindkey -e
 bindkey ' ' magic-space
 bindkey '^U' backward-kill-line
@@ -78,28 +74,20 @@ esac
 ### === PROMPT: STARSHIP === ###
 eval "$(starship init zsh)"
 
-### === CORES PARA LS, GREP, ETC === ###
-if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  export LS_COLORS="$LS_COLORS:ow=30;44:"
+### === CORES PARA GREP, DIFF, ETC === ###
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias diff='diff --color=auto'
+alias ip='ip --color=auto'
 
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
-  alias diff='diff --color=auto'
-  alias ip='ip --color=auto'
-
-  export LESS_TERMCAP_mb=$'\E[1;31m'
-  export LESS_TERMCAP_md=$'\E[1;36m'
-  export LESS_TERMCAP_me=$'\E[0m'
-  export LESS_TERMCAP_so=$'\E[01;33m'
-  export LESS_TERMCAP_se=$'\E[0m'
-  export LESS_TERMCAP_us=$'\E[1;32m'
-  export LESS_TERMCAP_ue=$'\E[0m'
-
-  zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-  zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-fi
+export LESS_TERMCAP_mb=$'\E[1;31m'
+export LESS_TERMCAP_md=$'\E[1;36m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;33m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[1;32m'
+export LESS_TERMCAP_ue=$'\E[0m'
 
 ### === ALIAS === ###
 alias ls="eza --icons --color=auto --group-directories-first"
@@ -110,7 +98,7 @@ alias lta="eza --tree --icons --color=auto --all --level=3"
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias alacritty='alacritty --config-file ~/.config/alacritty/alacritty.toml'
 
-### === HIGHLIGHTING === ###
+### === SYNTAX HIGHLIGHTING === ###
 if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
   . /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
@@ -149,27 +137,25 @@ if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
   ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan,underline'
 fi
 
-### === COMANDO-NOT-FOUND === ###
-if [ -f /etc/zsh_command_not_found ]; then
-  . /etc/zsh_command_not_found
-fi
-
 ### === ENVIRONMENT VARS === ###
+
+# Android — descomente quando for usar
+# export ANDROID_HOME="$HOME/Android/Sdk"
+# export PATH="$ANDROID_HOME/platform-tools:$PATH"
+# export PATH="$PATH:/opt/android-studio/bin"
+
+# NVM
 export NVM_DIR="$HOME/.nvm"
-export ANDROID_HOME="$HOME/Android/Sdk"
-export PATH="$ANDROID_HOME/platform-tools:$PATH"
-export PATH="$PATH:/opt/android-studio/bin"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-. "$HOME/.cargo/env"
 
-export PATH="$HOME/.cargo/bin:$PATH"
+# Rust
+# . "$HOME/.cargo/env"
+# export PATH="$HOME/.cargo/bin:$PATH"
 
-copyfile() {
-  xclip -selection clipboard -i "$1"
-}
+# Docker — descomente quando for usar
+# export DOCKER_HOST=unix:///var/run/docker.sock
 
-export DOCKER_HOST=unix:///var/run/docker.sock
 export PATH="$HOME/.local/bin:$PATH"
 
 # pnpm
@@ -178,11 +164,13 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
-
-# bun completions
-[ -s "/home/sagittarius/.bun/_bun" ] && source "/home/sagittarius/.bun/_bun"
 
 # bun
+[ -s "/home/sagittarius/.bun/_bun" ] && source "/home/sagittarius/.bun/_bun"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+### === FUNÇÕES === ###
+copyfile() {
+  xclip -selection clipboard -i "$1"
+}
