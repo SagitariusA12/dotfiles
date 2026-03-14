@@ -59,8 +59,8 @@
         "warp-on-scroll": false,
         "format": "{icon}",
         "format-icons": {
-            "active": "ᗤ",
-            "default": "󱙝",
+            // "active": "ᗤ",
+            // "default": "󱙝",
             "urgent": "󰀦"
         },
         "window-rewrite": {
