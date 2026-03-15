@@ -177,6 +177,17 @@
     },
 
     // ── NETWORK ──────────────────────────────────────────────────
+    //"network": {
+    //    "format-wifi": "󰤨 {essid} {signalStrength}%",
+    //    "format-ethernet": "󰈀 {ipaddr}",
+    //    "format-linked": "󰈀 {ifname} (sem IP)",
+    //    "format-disconnected": "󰤭 Desconectado",
+    //    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    //    "tooltip-format": "󰤨 {ifname} via {gwaddr}\nIP: {ipaddr}\nForça: {signalStrength}%",
+    //    "interval": 5,
+    //    "on-click-right": "nm-connection-editor"
+    //},
+
     "network": {
         "format-wifi": "󰤨 {essid} {signalStrength}%",
         "format-ethernet": "󰈀 {ipaddr}",
@@ -185,7 +196,8 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "tooltip-format": "󰤨 {ifname} via {gwaddr}\nIP: {ipaddr}\nForça: {signalStrength}%",
         "interval": 5,
-        "on-click-right": "nm-connection-editor"
+        "on-click-righy": "kitty -e nmtui",
+        "on-click": "iwgtk"
     },
 
     // ── POWER PROFILES ───────────────────────────────────────────
