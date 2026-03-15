@@ -1,0 +1,230 @@
+/* ╔══════════════════════════════════════════════════════════════╗ */
+/* ║           ROFI — NEON ARCADE THEME                           ║ */
+/* ║           Baseado no tema Waybar Neon Arcade                 ║ */
+/* ╚══════════════════════════════════════════════════════════════╝ */
+
+/* ── PALETA ──────────────────────────────────────────────────── */
+* {
+    /* Cores base */
+    bg0:        #09090f;
+    bg1:        #0f0f1a;
+    bg2:        #14141f;
+
+    /* Neons principais */
+    cyan:       #00e5ff;
+    magenta:    #ff00ff;
+    green:      #00ff88;
+    orange:     #ff6b00;
+    purple:     #bf00ff;
+    red:        #ff0055;
+    yellow:     #ffcc00;
+
+    /* Gradient ativo (igual ao clock/workspaces.active) */
+    grad-start: #00e5ff;
+    grad-end:   #bf00ff;
+
+    /* Texto */
+    fg0:        #e0e0f0;
+    fg-dim:     #444455;
+
+    /* Transparências (hex #RRGGBBAA) */
+    cyan-a:     #00e5ff33;
+    magenta-a:  #ff00ff33;
+    green-a:    #00ff8833;
+    red-a:      #ff005533;
+
+    font:       "FiraCode Nerd Font 12";
+
+    /* Resetar globais */
+    background-color:   transparent;
+    text-color:         @fg0;
+    border-color:       transparent;
+    spacing:            0;
+}
+
+/* ── JANELA PRINCIPAL ───────────────────────────────────────── */
+window {
+    background-color:   @bg0;
+    border:             1px solid;
+    border-color:       @cyan-a;
+    border-radius:      14px;
+    width:              520px;
+    padding:            0;
+
+}
+
+/* ── LAYOUT PRINCIPAL ───────────────────────────────────────── */
+mainbox {
+    background-color:   transparent;
+    children:           [ inputbar, message, listview ];
+    spacing:            0;
+    padding:            10px;
+}
+
+/* ── BARRA DE INPUT ─────────────────────────────────────────── */
+inputbar {
+    background-color:   @bg1;
+    border:             1px solid;
+    border-color:       @cyan-a;
+    border-radius:      10px;
+    padding:            8px 12px;
+    margin:             0 0 8px 0;
+    children:           [ prompt, textbox-prompt-colon, entry ];
+    spacing:            6px;
+}
+
+prompt {
+    background-color:   transparent;
+    text-color:         @cyan;
+    font:               "FiraCode Nerd Font Bold 12";
+}
+
+textbox-prompt-colon {
+    background-color:   transparent;
+    text-color:         @fg-dim;
+    expand:             false;
+    str:                "›";
+    margin:             0 4px 0 0;
+}
+
+entry {
+    background-color:   transparent;
+    text-color:         @fg0;
+    placeholder:        "pesquisar...";
+    placeholder-color:  @fg-dim;
+    cursor:             text;
+}
+
+/* ── LISTA DE ITENS ─────────────────────────────────────────── */
+listview {
+    background-color:   transparent;
+    lines:              10;
+    columns:            1;
+    scrollbar:          true;
+    spacing:            3px;
+    fixed-height:       true;
+    dynamic:            false;
+}
+
+/* ── ITEM PADRÃO ────────────────────────────────────────────── */
+element {
+    background-color:   transparent;
+    border-radius:      10px;
+    padding:            6px 10px;
+    spacing:            8px;
+    children:           [ element-icon, element-text ];
+    orientation:        horizontal;
+    border:             1px solid;
+    border-color:       transparent;
+}
+
+element normal.normal {
+    background-color:   @bg1;
+    text-color:         @fg0;
+    border-color:       #ffffff0d;
+}
+
+element normal.urgent {
+    background-color:   @red-a;
+    text-color:         @red;
+    border-color:       #ff005566;
+}
+
+element normal.active {
+    background-color:   @cyan-a;
+    text-color:         @cyan;
+    border-color:       #00e5ff4d;
+}
+
+/* ── ITEM SELECIONADO (igual workspaces button.active) ──────── */
+element selected.normal {
+    background-color:   @bg2;
+    text-color:         @cyan;
+    border-color:       @cyan;
+}
+
+element selected.urgent {
+    background-color:   @red-a;
+    text-color:         @red;
+    border-color:       @red;
+}
+
+element selected.active {
+    background-color:   @green-a;
+    text-color:         @green;
+    border-color:       @green;
+}
+
+/* ── HOVER ──────────────────────────────────────────────────── */
+element alternate.normal {
+    background-color:   @bg0;
+    text-color:         @fg0;
+    border-color:       transparent;
+}
+
+/* ── ÍCONE DO ITEM ──────────────────────────────────────────── */
+element-icon {
+    background-color:   transparent;
+    size:               18px;
+    border:             0;
+}
+
+/* ── TEXTO DO ITEM ──────────────────────────────────────────── */
+element-text {
+    background-color:   transparent;
+    text-color:         inherit;
+    highlight:          bold #ff00ff;
+    vertical-align:     0.5;
+}
+
+/* ── SCROLLBAR ──────────────────────────────────────────────── */
+scrollbar {
+    background-color:   @bg1;
+    handle-color:       @cyan;
+    handle-width:       3px;
+    border-radius:      4px;
+    width:              4px;
+    margin:             0 0 0 6px;
+    border:             0;
+}
+
+/* ── MENSAGEM / ERRO ────────────────────────────────────────── */
+message {
+    background-color:   @red-a;
+    border:             1px solid;
+    border-color:       #ff005566;
+    border-radius:      10px;
+    padding:            6px 10px;
+    margin:             0 0 8px 0;
+}
+
+textbox {
+    background-color:   transparent;
+    text-color:         @red;
+    font:               "FiraCode Nerd Font Bold 11";
+}
+
+/* ── MODO (drun, run, ssh…) ─────────────────────────────────── */
+mode-switcher {
+    background-color:   @bg1;
+    border:             1px solid;
+    border-color:       #ffffff0d;
+    border-radius:      10px;
+    padding:            4px;
+    margin:             8px 0 0 0;
+    spacing:            4px;
+}
+
+button {
+    background-color:   transparent;
+    text-color:         @fg-dim;
+    border-radius:      8px;
+    padding:            4px 10px;
+}
+
+button selected {
+    background-color:   @bg2;
+    text-color:         @magenta;
+    border:             1px solid;
+    border-color:       #ff00ff59;
+}

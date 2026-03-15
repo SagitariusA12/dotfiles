@@ -1,0 +1,8 @@
+// https://github.com/adi1090x/rofi/tree/master
+
+configuration {
+    icon-theme: "WhiteSur";
+    show-icons: true;
+}
+
+@theme "style-7.rasi"
