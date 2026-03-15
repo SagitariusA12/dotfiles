@@ -196,8 +196,8 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "tooltip-format": "󰤨 {ifname} via {gwaddr}\nIP: {ipaddr}\nForça: {signalStrength}%",
         "interval": 5,
-        "on-click-righy": "kitty -e nmtui",
-        "on-click": "iwgtk"
+        "on-click": "kitty -e nmtui",
+        "on-click-right": "nm-connection-editor"
     },
 
     // ── POWER PROFILES ───────────────────────────────────────────
