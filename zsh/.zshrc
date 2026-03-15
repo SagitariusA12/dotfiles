@@ -154,7 +154,7 @@ export NVM_DIR="$HOME/.nvm"
 # export PATH="$HOME/.cargo/bin:$PATH"
 
 # Docker — descomente quando for usar
-# export DOCKER_HOST=unix:///var/run/docker.sock
+export DOCKER_HOST=unix:///var/run/docker.sock
 
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -174,3 +174,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 copyfile() {
   xclip -selection clipboard -i "$1"
 }
+
+# opencode
+export PATH=/home/sagittarius/.opencode/bin:$PATH
