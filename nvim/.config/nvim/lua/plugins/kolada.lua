@@ -6,7 +6,7 @@ return {
 	name = "kolada",
 	priority = 1000,
 	config = function()
-		require("themes.kolada").setup()
+		require("themes.kolada").setup({ transparent = false })
 		vim.cmd.colorscheme("kolada")
 	end,
 }
