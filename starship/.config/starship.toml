@@ -1,9 +1,6 @@
-# starship.toml
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-$os\
-$username\
 $directory\
 $git_branch\
 $git_status\
@@ -56,20 +53,20 @@ style = "fg:teal"
 [os.symbols]
 Windows = "󰍲"
 Ubuntu = "󰕈"
-SUSE = ""
+SUSE = ""
 Raspbian = "󰐿"
 Mint = "󰣭"
-Macos = ""
-Manjaro = ""
+Macos = ""
+Manjaro = ""
 Linux = "󰌽"
 Gentoo = "󰣨"
 Fedora = "󰣛"
-Alpine = ""
-Amazon = ""
-Android = ""
+Alpine = ""
+Amazon = ""
+Android = ""
 Arch = "󰣇 "
 Artix = "󰣇"
-CentOS = ""
+CentOS = ""
 Debian = "󰣚"
 Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
@@ -89,22 +86,22 @@ truncation_symbol = "…/"
 [directory.substitutions]
 "Documents" = "󰈙 "
 "Documentos" = "󰈙 "
-"Downloads" = " "
+"Downloads" = " "
 "Music" = "󰝚 "
 "Músicas" = "󰝚 "
 "Música" = "󰝚 "
-"Pictures" = " "
-"Imagens" = " "
+"Pictures" = " "
+"Imagens" = " "
 "Developer" = "󰲋 "
 
 [git_branch]
-symbol = ""
+symbol = ""
 style = "fg:green"
 format = "on [$symbol $branch ]($style)"
 
 [git_status]
 style = "fg:green"
-format = '[($all_status$ahead_behind )]($style)'
+format = "([\\[$all_status$ahead_behind\\]]($style) )"
 
 [cmd_duration]
 min_time = 500
@@ -112,47 +109,47 @@ style = "fg:yellow"
 format = "took [$duration ]($style)"
 
 [nodejs]
-symbol = ""
+symbol = ""
 style = "fg:teal"
 format = '[[ $symbol( $version) ](fg:teal)]($style)'
 
 [c]
-symbol = " "
+symbol = " "
 style = "fg:teal"
 format = '[[ $symbol( $version) ](fg:teal)]($style)'
 
 [rust]
-symbol = ""
+symbol = ""
 style = "fg:teal"
 format = '[[ $symbol( $version) ](fg:teal)]($style)'
 
 [golang]
-symbol = ""
+symbol = ""
 style = "fg:teal"
 format = '[[ $symbol( $version) ](fg:teal)]($style)'
 
 [php]
-symbol = ""
+symbol = ""
 style = "fg:teal"
 format = '[[ $symbol( $version) ](fg:teal)]($style)'
 
 [java]
-symbol = " "
+symbol = " "
 style = "fg:teal"
 format = '[[ $symbol( $version) ](fg:teal)]($style)'
 
 [kotlin]
-symbol = ""
+symbol = ""
 style = "fg:teal"
 format = '[[ $symbol( $version) ](fg:teal)]($style)'
 
 [haskell]
-symbol = ""
+symbol = ""
 style = "fg:teal"
 format = '[[ $symbol( $version) ](fg:teal)]($style)'
 
 [python]
-symbol = ""
+symbol = ""
 style = "fg:teal"
 format = '[[ $symbol( $version) ](fg:teal)]($style)'
 
@@ -160,10 +157,9 @@ format = '[[ $symbol( $version) ](fg:teal)]($style)'
 disabled = false
 
 [character]
-disabled = false
-success_symbol = "[\\)](bold fg:teal)"
-error_symbol = "[\\)](bold fg:red)"
-vimcmd_symbol = "[\\)](bold fg:green)"
-vimcmd_replace_one_symbol = "[\\)](bold fg:orange)"
-vimcmd_replace_symbol = "[\\)](bold fg:orange)"
-vimcmd_visual_symbol = "[\\)](bold fg:lavender)"
+success_symbol = "[❯](bold fg:teal)"
+error_symbol = "[❯](bold fg:red)"
+vimcmd_symbol = "[❮](bold fg:green)"
+vimcmd_replace_one_symbol = "[❮](bold fg:orange)"
+vimcmd_replace_symbol = "[❮](bold fg:orange)"
+vimcmd_visual_symbol = "[❮](bold fg:lavender)"
