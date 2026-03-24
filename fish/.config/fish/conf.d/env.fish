@@ -1,15 +1,13 @@
-set -gx PATH $HOME/.local/bin $PATH
+# PATH base (evita duplicação)
+fish_add_path $HOME/.local/bin
 
 # PNPM
-set -gx PNPM_HOME "$HOME/.local/share/pnpm"
-if not contains $PNPM_HOME $PATH
-    set -gx PATH $PNPM_HOME $PATH
-end
+set -gx PNPM_HOME $HOME/.local/share/pnpm
+fish_add_path $PNPM_HOME
+
+# Docker
+# set -gx DOCKER_HOST unix:///var/run/docker.sock
 
 # Bun
-set -gx BUN_INSTALL "$HOME/.bun"
-set -gx PATH $BUN_INSTALL/bin $PATH
-
-if test -s "$HOME/.bun/_bun"
-    source "$HOME/.bun/_bun"
-end
+set -gx BUN_INSTALL $HOME/.bun
+fish_add_path $BUN_INSTALL/bin
