@@ -1,8 +1,8 @@
 # ~/.zshrc file for zsh interactive shells
 
-if [[ -o login ]] && command -v fastfetch &>/dev/null; then
-  fastfetch
-fi
+# if [[ -o login ]] && command -v fastfetch &>/dev/null; then
+#   fastfetch
+# fi
 
 ### ===| UTILITÁRIOS |=== ###
 eval "$(zoxide init zsh)"
@@ -16,8 +16,8 @@ setopt notify
 setopt numericglobsort
 setopt promptsubst
 
-WORDCHARS=${WORDCHARS//\/}
-PROMPT_EOL_MARK=""
+# WORDCHARS=${WORDCHARS//\/}
+# PROMPT_EOL_MARK=""
 
 ### === KEYBINDINGS === ###
 bindkey -e
