@@ -66,7 +66,6 @@
   "workbench.activityBar.location": "hidden",
   "workbench.tree.indent": 14,
   "workbench.tree.renderIndentGuides": "always",
-  "workbench.colorTheme": "Kolada",
   "workbench.productIconTheme": "fluent-icons",
   "workbench.settings.applyToAllProfiles": ["workbench.colorCustomizations"],
 
@@ -369,7 +368,7 @@
             "constant.numeric",
             "constant.language"
           ],
-          "settings": { "foreground": "#ff0c9e" }
+          "settings": { "foreground": "#00ffd9" }
         },
         {
           "scope": ["keyword.other.important", "keyword.other.important.css"],
@@ -405,5 +404,7 @@
         }
       ]
     }
-  }
+  },
+  "docker.extension.enableComposeLanguageServer": false,
+  "workbench.colorTheme": "Kolada"
 }

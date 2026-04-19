@@ -1,47 +1,54 @@
 return {
-	{
-		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			local telescope = require("telescope")
-			local builtin = require("telescope.builtin")
-			local actions = require("telescope.actions")
-			telescope.setup({
-				defaults = {
-					mappings = {
-						i = {
-							["<esc>"] = actions.close,
-						},
-					},
-					preview = {
-						treesitter = false,
-					},
-				},
-			})
-			local function current_dir()
-				return vim.fn.expand("%:p:h")
-			end
-			local function find_local_files()
-				builtin.find_files({
-					cwd = current_dir(),
-					hidden = true,
-				})
-			end
-			local function live_grep_local()
-				builtin.live_grep({
-					cwd = current_dir(),
-					additional_args = function()
-						return { "--hidden" }
-					end,
-				})
-			end
-			vim.keymap.set("n", "<leader>ff", find_local_files)
-			vim.keymap.set("n", "<leader>fg", live_grep_local)
-			vim.keymap.set("n", "<leader>fb", builtin.buffers)
-			vim.keymap.set("n", "<leader>fh", builtin.help_tags)
-			vim.keymap.set("n", "<C-p>", find_local_files)
-			vim.keymap.set("n", "<leader><leader>", builtin.oldfiles)
-		end,
-	},
+    {
+        "nvim-telescope/telescope.nvim",
+        branch = "0.1.x",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+            local telescope = require("telescope")
+            local builtin = require("telescope.builtin")
+            local actions = require("telescope.actions")
+
+            local ignore_patterns = { "%.git/", "node_modules/", "__pycache__/" }
+
+            local function project_root()
+                return vim.fn.systemlist("git rev-parse --show-toplevel")[1] or vim.fn.getcwd()
+            end
+
+            telescope.setup({
+                defaults = {
+                    mappings = {
+                        i = { ["<esc>"] = actions.close },
+                    },
+                    file_ignore_patterns = ignore_patterns,
+                },
+            })
+
+            local function find_files()
+                builtin.find_files({
+                    cwd = project_root(),
+                    hidden = true,
+                })
+            end
+
+            local function live_grep()
+                builtin.live_grep({
+                    cwd = project_root(),
+                    additional_args = { "--hidden" },
+                })
+            end
+
+            local keymaps = {
+                { "n", "<leader>ff",       find_files },
+                { "n", "<C-p>",            find_files },
+                { "n", "<leader>fg",       live_grep },
+                { "n", "<leader>fb",       builtin.buffers },
+                { "n", "<leader>fh",       builtin.help_tags },
+                { "n", "<leader><leader>", builtin.oldfiles },
+            }
+
+            for _, map in ipairs(keymaps) do
+                vim.keymap.set(map[1], map[2], map[3])
+            end
+        end,
+    },
 }
