@@ -2,16 +2,34 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
-        dependencies = { "nvim-lua/plenary.nvim" },
+        cmd = "Telescope", -- carrega só quando chamar :Telescope
+        keys = {     -- ou quando usar um dos atalhos
+            "<leader>ff",
+            "<C-p>",
+            "<leader>fg",
+            "<leader>fb",
+            "<leader>fh",
+            "<leader><leader>",
+        },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                build = "make", -- compilar extensão nativa (muito mais rápido)
+            },
+        },
         config = function()
             local telescope = require("telescope")
             local builtin = require("telescope.builtin")
             local actions = require("telescope.actions")
-
             local ignore_patterns = { "%.git/", "node_modules/", "__pycache__/" }
 
+            local _project_root_cache = nil
             local function project_root()
-                return vim.fn.systemlist("git rev-parse --show-toplevel")[1] or vim.fn.getcwd()
+                if not _project_root_cache then
+                    _project_root_cache = vim.fn.systemlist("git rev-parse --show-toplevel")[1] or vim.fn.getcwd()
+                end
+                return _project_root_cache
             end
 
             telescope.setup({
@@ -20,8 +38,20 @@ return {
                         i = { ["<esc>"] = actions.close },
                     },
                     file_ignore_patterns = ignore_patterns,
+                    find_command = { "fd", "--type", "f", "--hidden", "--exclude", ".git" },
+                },
+                extensions = {
+                    fzf = {
+                        fuzzy = true,
+                        override_generic_sorter = true,
+                        override_file_sorter = true,
+                        case_mode = "smart_case",
+                    },
                 },
             })
+
+            -- Carrega extensão nativa
+            telescope.load_extension("fzf")
 
             local function find_files()
                 builtin.find_files({
