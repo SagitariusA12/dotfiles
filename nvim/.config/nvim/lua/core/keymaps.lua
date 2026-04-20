@@ -43,7 +43,7 @@ map("n", "<C-l>", "<C-w>l", opts)
 
 -- LSP format
 map("n", "<leader>fp", function()
-	vim.lsp.buf.format({ async = true })
+    vim.lsp.buf.format({ async = true })
 end, { desc = "Format buffer with LSP" })
 
 -- Terminal (split vertical)
@@ -63,5 +63,9 @@ map("t", "<C-q>", "<C-\\><C-n>:q!<CR>", opts)
 
 -- Repete última edição na linha atual
 map("n", "<leader>.", ":.norm.<CR>", opts)
+
+-- Visual (linhas quebradas)
+map("n", "j", "gj", opts)
+map("n", "k", "gk", opts)
 
 return {}

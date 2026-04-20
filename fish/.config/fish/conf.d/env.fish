@@ -8,6 +8,14 @@ fish_add_path $PNPM_HOME
 # Docker
 # set -gx DOCKER_HOST unix:///var/run/docker.sock
 
+# Go
+set -gx GOPATH $HOME/go
+fish_add_path $GOPATH/bin
+
+# Neovim for Notes
+set -Ux EDITOR nvim
+set -Ux NOTES_CLI_EDITOR nvim
+
 # Bun
 set -gx BUN_INSTALL $HOME/.bun
 fish_add_path $BUN_INSTALL/bin
