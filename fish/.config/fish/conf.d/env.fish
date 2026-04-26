@@ -8,6 +8,10 @@ fish_add_path $PNPM_HOME
 # Docker
 # set -gx DOCKER_HOST unix:///var/run/docker.sock
 
+# Rust / Cargo
+set -gx CARGO_HOME $HOME/.cargo
+fish_add_path $CARGO_HOME/bin
+
 # Go
 set -gx GOPATH $HOME/go
 fish_add_path $GOPATH/bin

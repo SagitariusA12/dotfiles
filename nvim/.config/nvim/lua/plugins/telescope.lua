@@ -2,8 +2,8 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
-        cmd = "Telescope", -- carrega só quando chamar :Telescope
-        keys = {     -- ou quando usar um dos atalhos
+        cmd = "Telescope",
+        keys = {
             "<leader>ff",
             "<C-p>",
             "<leader>fg",
@@ -15,21 +15,35 @@ return {
             "nvim-lua/plenary.nvim",
             {
                 "nvim-telescope/telescope-fzf-native.nvim",
-                build = "make", -- compilar extensão nativa (muito mais rápido)
+                build = "make",
             },
         },
         config = function()
             local telescope = require("telescope")
             local builtin = require("telescope.builtin")
             local actions = require("telescope.actions")
+
             local ignore_patterns = { "%.git/", "node_modules/", "__pycache__/" }
 
-            local _project_root_cache = nil
+            -- Cache do root, resetado ao mudar de diretório
+            local _root_cache = nil
+            vim.api.nvim_create_autocmd("DirChanged", {
+                callback = function()
+                    _root_cache = nil
+                end,
+            })
+
             local function project_root()
-                if not _project_root_cache then
-                    _project_root_cache = vim.fn.systemlist("git rev-parse --show-toplevel")[1] or vim.fn.getcwd()
+                if not _root_cache then
+                    local git_root = vim.fn.systemlist("git rev-parse --show-toplevel 2>/dev/null")[1]
+                    -- Garante que é um caminho real, não uma mensagem de erro do git
+                    if git_root and vim.fn.isdirectory(git_root) == 1 then
+                        _root_cache = git_root
+                    else
+                        _root_cache = vim.fn.getcwd()
+                    end
                 end
-                return _project_root_cache
+                return _root_cache
             end
 
             telescope.setup({
@@ -50,21 +64,15 @@ return {
                 },
             })
 
-            -- Carrega extensão nativa
             telescope.load_extension("fzf")
 
             local function find_files()
-                builtin.find_files({
-                    cwd = project_root(),
-                    hidden = true,
-                })
+                builtin.find_files({ cwd = project_root(), hidden = true })
             end
 
             local function live_grep()
-                builtin.live_grep({
-                    cwd = project_root(),
-                    additional_args = { "--hidden" },
-                })
+                -- CORRIGIDO: era "[builtin.live](http://builtin.live)_grep"
+                builtin.live_grep({ cwd = project_root(), additional_args = { "--hidden" } })
             end
 
             local keymaps = {
@@ -72,6 +80,7 @@ return {
                 { "n", "<C-p>",            find_files },
                 { "n", "<leader>fg",       live_grep },
                 { "n", "<leader>fb",       builtin.buffers },
+                -- CORRIGIDO: era "[builtin.help](http://builtin.help)_tags"
                 { "n", "<leader>fh",       builtin.help_tags },
                 { "n", "<leader><leader>", builtin.oldfiles },
             }
