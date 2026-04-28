@@ -7,7 +7,6 @@
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
-
   // ─────────────────────────────────────────────
   //  EDITOR — APARÊNCIA
   // ─────────────────────────────────────────────
@@ -15,7 +14,10 @@
   "editor.fontSize": 14,
   "editor.lineHeight": 1.4,
   "editor.fontLigatures": true,
-  "editor.rulers": [120, 200],
+  "editor.rulers": [
+    120,
+    200
+  ],
   "editor.wordWrap": "on",
   "editor.renderLineHighlight": "gutter",
   "editor.renderWhitespace": "boundary",
@@ -27,7 +29,6 @@
   "editor.cursorStyle": "line",
   "editor.smoothScrolling": true,
   "editor.letterSpacing": 0.3,
-
   // ─────────────────────────────────────────────
   //  EDITOR — EXPERIÊNCIA DE EDIÇÃO
   // ─────────────────────────────────────────────
@@ -40,20 +41,28 @@
   "editor.formatOnPaste": true,
   "editor.linkedEditing": true,
   "editor.largeFileOptimizations": true,
-
-  // Bracket pairs (você não tinha isso — muito útil!)
+  // Sugestões inteligentes — ativas em strings (Tailwind, templates)
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "off",
+    "strings": true
+  },
+  // Bracket pairs
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": "active",
   "editor.guides.indentation": true,
   "editor.guides.highlightActiveIndentation": true,
-
-  // Sticky scroll — mantém contexto da função visível ao scrollar
+  // Sticky scroll
   "editor.stickyScroll.enabled": true,
   "editor.stickyScroll.maxLineCount": 5,
-
-  // Inlay hints — tipos inline (muito útil em TS e Python)
+  // Inlay hints
   "editor.inlayHints.enabled": "offUnlessPressed",
-
+  // Code actions ao salvar (ESLint fix + organizar imports)
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
   // ─────────────────────────────────────────────
   //  WORKBENCH
   // ─────────────────────────────────────────────
@@ -67,8 +76,9 @@
   "workbench.tree.indent": 14,
   "workbench.tree.renderIndentGuides": "always",
   "workbench.productIconTheme": "fluent-icons",
-  "workbench.settings.applyToAllProfiles": ["workbench.colorCustomizations"],
-
+  "workbench.settings.applyToAllProfiles": [
+    "workbench.colorCustomizations"
+  ],
   // ─────────────────────────────────────────────
   //  WINDOW
   // ─────────────────────────────────────────────
@@ -76,7 +86,6 @@
   "window.autoDetectColorScheme": false,
   "window.titleBarStyle": "custom",
   "window.commandCenter": false,
-
   // ─────────────────────────────────────────────
   //  EXPLORER
   // ─────────────────────────────────────────────
@@ -84,39 +93,27 @@
   "explorer.sortOrder": "foldersNestsFiles",
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
-    // TypeScript / JavaScript
     "*.ts": "${capture}.js",
     "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
     "*.jsx": "${capture}.js",
     "*.tsx": "${capture}.ts",
     "*.css": "${capture}.module.css, ${capture}.module.scss",
-
-    // Config files
     "tsconfig.json": "tsconfig.*.json",
     "package.json": ".eslint*, prettier*, tsconfig*, vite*, pnpm-*, bun.lockb, nest*, package-lock*, yarn.lock",
     "tailwind.config.*": "tailwind.config*, postcss.config*",
     ".env.local": ".env*",
     ".env": ".env*",
-
-    // Docker
     "Dockerfile": "docker-compose*, .dockerignore",
-
-    // Docs
     "README.md": "*.md, LICENSE*, CHANGELOG*",
-
-    // Databases
     "*.sqlite": "${capture}.${extname}-*",
     "*.db": "${capture}.${extname}-*",
     "*.sqlite3": "${capture}.${extname}-*",
     "*.db3": "${capture}.${extname}-*",
     "*.sdb": "${capture}.${extname}-*",
     "*.s3db": "${capture}.${extname}-*",
-
-    // Python
     "pyproject.toml": "poetry.lock, requirements*.txt, setup.py, setup.cfg, .python-version",
     "*.py": "${capture}.pyi"
   },
-
   // ─────────────────────────────────────────────
   //  BREADCRUMBS & OUTLINE
   // ─────────────────────────────────────────────
@@ -124,7 +121,6 @@
   "breadcrumbs.filePath": "on",
   "outline.showVariables": true,
   "outline.showFunctions": true,
-
   // ─────────────────────────────────────────────
   //  TERMINAL
   // ─────────────────────────────────────────────
@@ -135,7 +131,6 @@
   "terminal.integrated.smoothScrolling": true,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.persistentSessionReviveProcess": "never",
-
   // ─────────────────────────────────────────────
   //  SEARCH
   // ─────────────────────────────────────────────
@@ -149,7 +144,6 @@
     "**/build": true,
     "**/.venv": true
   },
-
   // ─────────────────────────────────────────────
   //  GIT
   // ─────────────────────────────────────────────
@@ -157,7 +151,6 @@
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
   "diffEditor.ignoreTrimWhitespace": true,
-
   // ─────────────────────────────────────────────
   //  TYPESCRIPT / JAVASCRIPT
   // ─────────────────────────────────────────────
@@ -167,10 +160,8 @@
   "typescript.inlayHints.parameterNames.enabled": "literals",
   "typescript.inlayHints.variableTypes.enabled": false,
   "typescript.inlayHints.returnTypes.enabled": true,
-
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.suggest.autoImports": true,
-
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
@@ -183,7 +174,31 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
-
+  // ─────────────────────────────────────────────
+  //  TAILWIND CSS
+  // ─────────────────────────────────────────────
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html",
+    "javascript": "javascript",
+    "typescript": "typescript",
+    "javascriptreact": "javascriptreact",
+    "typescriptreact": "typescriptreact"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    [
+      "cva\\(([^)]*)\\)",
+      "[\"'`]([^\"'`]*).*?[\"'`]"
+    ],
+    [
+      "cx\\(([^)]*)\\)",
+      "(?:'|\"|`)([^']*)(?:'|\"|`)"
+    ],
+    [
+      "cn\\(([^)]*)\\)",
+      "(?:'|\"|`)([^']*)(?:'|\"|`)"
+    ]
+  ],
+  // "headwind.runOnSave": true,
   // ─────────────────────────────────────────────
   //  PYTHON
   // ─────────────────────────────────────────────
@@ -192,7 +207,6 @@
   "python.analysis.autoImportCompletions": true,
   "python.analysis.inlayHints.variableTypes": false,
   "python.analysis.inlayHints.functionReturnTypes": true,
-
   "[python]": {
     "editor.formatOnSave": true,
     "editor.formatOnSaveMode": "file",
@@ -200,27 +214,26 @@
     "editor.defaultFormatter": "eeyore.yapf",
     "editor.tabSize": 4
   },
-
   // ─────────────────────────────────────────────
   //  C++
   // ─────────────────────────────────────────────
   "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 120 }",
   "C_Cpp.inlayHints.parameterNames.enabled": true,
   "C_Cpp.inlayHints.autoDeclarationTypes.enabled": false,
-
   "[cpp]": {
     "editor.defaultFormatter": "ms-vscode.cpptools",
     "editor.tabSize": 4
   },
-
   // ─────────────────────────────────────────────
   //  HTML / CSS
   // ─────────────────────────────────────────────
   "emmet.formatExpansion": true,
   "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact",
+    "javascriptreact": "javascriptreact",
+    "typescriptreact": "typescriptreact"
   },
-
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
   },
@@ -230,7 +243,6 @@
   "[scss]": {
     "editor.defaultFormatter": "vscode.css-language-features"
   },
-
   // ─────────────────────────────────────────────
   //  JSON
   // ─────────────────────────────────────────────
@@ -240,14 +252,12 @@
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-
   // ─────────────────────────────────────────────
   //  PRETTIER
   // ─────────────────────────────────────────────
   "prettier.printWidth": 80,
   "prettier.jsxSingleQuote": true,
   "prettier.bracketSameLine": false,
-
   // ─────────────────────────────────────────────
   //  ESLINT
   // ─────────────────────────────────────────────
@@ -258,7 +268,6 @@
     "typescriptreact",
     "graphql"
   ],
-
   // ─────────────────────────────────────────────
   //  SPELL CHECK
   // ─────────────────────────────────────────────
@@ -275,13 +284,11 @@
     "tailwindcss",
     "unform"
   ],
-
   // ─────────────────────────────────────────────
   //  LIVE SERVER
   // ─────────────────────────────────────────────
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
-
   // ─────────────────────────────────────────────
   //  GITHUB COPILOT (desativado)
   // ─────────────────────────────────────────────
@@ -293,18 +300,24 @@
     "scminput": false,
     "cpp": false
   },
-
   // ─────────────────────────────────────────────
   //  APC CUSTOMIZE UI
   // ─────────────────────────────────────────────
   "apc.electron": {
     "titleBarStyle": "hidden",
-    "trafficLightPosition": { "x": 11, "y": 10 },
+    "trafficLightPosition": {
+      "x": 11,
+      "y": 10
+    },
     "opacity": 0.3,
     "frame": false
   },
-  "apc.header": { "height": 36 },
-  "apc.listRow": { "height": 24 },
+  "apc.header": {
+    "height": 36
+  },
+  "apc.listRow": {
+    "height": 24
+  },
   "apc.stylesheet": {
     ".title-label > h2": "display: none",
     ".editor-actions": "display: flex",
@@ -315,13 +328,13 @@
     ".monaco-list-row": "border-radius: 4px;",
     ".monaco-workbench .monaco-list:not(.element-focused):focus:before": "display: none;"
   },
-
   // ─────────────────────────────────────────────
   //  OUTROS
   // ─────────────────────────────────────────────
   "glassit.alpha": 180,
   "console-ninja.featureSet": "Community",
-
+  "docker.extension.enableComposeLanguageServer": false,
+  "workbench.colorTheme": "Kolada",
   // ─────────────────────────────────────────────
   //  TOKEN COLOR CUSTOMIZATIONS (Tema Kolada)
   // ─────────────────────────────────────────────
@@ -330,19 +343,33 @@
       "textMateRules": [
         {
           "scope": "keyword",
-          "settings": { "foreground": "#000000" }
+          "settings": {
+            "foreground": "#000000"
+          }
         },
         {
-          "scope": ["entity.name.function", "support.function"],
-          "settings": { "foreground": "#f200ff" }
+          "scope": [
+            "entity.name.function",
+            "support.function"
+          ],
+          "settings": {
+            "foreground": "#f200ff"
+          }
         },
         {
-          "scope": ["variable", "entity.name"],
-          "settings": { "foreground": "#00FFFF" }
+          "scope": [
+            "variable",
+            "entity.name"
+          ],
+          "settings": {
+            "foreground": "#00FFFF"
+          }
         },
         {
           "scope": "variable.parameter",
-          "settings": { "foreground": "#77ecf0" }
+          "settings": {
+            "foreground": "#77ecf0"
+          }
         },
         {
           "scope": [
@@ -352,15 +379,24 @@
             "punctuation.definition.dict.end",
             "punctuation.section"
           ],
-          "settings": { "foreground": "#FF69B4" }
+          "settings": {
+            "foreground": "#FF69B4"
+          }
         },
         {
           "scope": "keyword.operator",
-          "settings": { "foreground": "#00B7EB" }
+          "settings": {
+            "foreground": "#00B7EB"
+          }
         },
         {
-          "scope": ["variable.other.constant"],
-          "settings": { "foreground": "#71ffbd", "fontStyle": "bold" }
+          "scope": [
+            "variable.other.constant"
+          ],
+          "settings": {
+            "foreground": "#71ffbd",
+            "fontStyle": "bold"
+          }
         },
         {
           "scope": [
@@ -368,43 +404,77 @@
             "constant.numeric",
             "constant.language"
           ],
-          "settings": { "foreground": "#00ffd9" }
+          "settings": {
+            "foreground": "#00ffd9"
+          }
         },
         {
-          "scope": ["keyword.other.important", "keyword.other.important.css"],
-          "settings": { "foreground": "#3fafd1", "fontStyle": "bold" }
+          "scope": [
+            "keyword.other.important",
+            "keyword.other.important.css"
+          ],
+          "settings": {
+            "foreground": "#3fafd1",
+            "fontStyle": "bold"
+          }
         },
         {
           "scope": "keyword.other.definition.ini",
-          "settings": { "foreground": "#33ff00" }
+          "settings": {
+            "foreground": "#33ff00"
+          }
         },
         {
           "scope": "keyword.other.using.directive.cpp",
-          "settings": { "foreground": "#11c7f5" }
+          "settings": {
+            "foreground": "#11c7f5"
+          }
         },
         {
-          "scope": ["entity.name.tag.html", "entity.name.tag"],
-          "settings": { "foreground": "#F04F6A", "fontStyle": "bold" }
+          "scope": [
+            "entity.name.tag.html",
+            "entity.name.tag"
+          ],
+          "settings": {
+            "foreground": "#F04F6A",
+            "fontStyle": "bold"
+          }
         },
         {
-          "scope": ["entity.name.tag.js.jsx"],
-          "settings": { "foreground": "#F04F6A", "fontStyle": "bold" }
+          "scope": [
+            "entity.name.tag.js.jsx"
+          ],
+          "settings": {
+            "foreground": "#F04F6A",
+            "fontStyle": "bold"
+          }
         },
         {
-          "scope": ["punctuation.definition.tag"],
-          "settings": { "foreground": "#ffffff", "fontStyle": "bold" }
+          "scope": [
+            "punctuation.definition.tag"
+          ],
+          "settings": {
+            "foreground": "#ffffff",
+            "fontStyle": "bold"
+          }
         },
         {
-          "scope": ["entity.other.attribute-name.html"],
-          "settings": { "foreground": "#ffffff" }
+          "scope": [
+            "entity.other.attribute-name.html"
+          ],
+          "settings": {
+            "foreground": "#ffffff"
+          }
         },
         {
-          "scope": ["entity.other.attribute-name.js"],
-          "settings": { "foreground": "#e4b841" }
+          "scope": [
+            "entity.other.attribute-name.js"
+          ],
+          "settings": {
+            "foreground": "#e4b841"
+          }
         }
       ]
     }
-  },
-  "docker.extension.enableComposeLanguageServer": false,
-  "workbench.colorTheme": "Kolada"
+  }
 }
