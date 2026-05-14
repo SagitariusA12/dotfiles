@@ -49,7 +49,16 @@ return {
             telescope.setup({
                 defaults = {
                     mappings = {
-                        i = { ["<esc>"] = actions.close },
+                        i = {
+                            ["<esc>"] = actions.close,
+                            ["<C-j>"] = actions.move_selection_next,
+                            ["<C-k>"] = actions.move_selection_previous,
+                            ["<CR>"] = actions.select_default,
+                        },
+                        n = {
+                            ["<esc>"] = actions.close,
+                            ["<CR>"] = actions.select_default,
+                        },
                     },
                     file_ignore_patterns = ignore_patterns,
                     find_command = { "fd", "--type", "f", "--hidden", "--exclude", ".git" },
