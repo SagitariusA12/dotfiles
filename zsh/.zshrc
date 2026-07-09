@@ -177,3 +177,5 @@ copyfile() {
 
 # opencode
 export PATH=/home/sagittarius/.opencode/bin:$PATH
+
+. "$HOME/.local/bin/env"

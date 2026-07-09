@@ -26,6 +26,11 @@ fish_add_path $BUN_INSTALL/bin
 
 # NVM (Node.js)
 set -gx NVM_DIR $HOME/.nvm
+fish_add_path $NVM_DIR/bin
+
+# UV (Python)
+set -gx UV_INSTALL_DIR $HOME/.local/bin
+fish_add_path $UV_INSTALL_DIR
 
 # Java (Oracle JDK 21)
 set -gx JAVA_HOME /usr/lib/jvm/jdk-21.0.7-oracle-x64
