@@ -1,0 +1,5 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR --export EDITOR:nvim
+SETUVAR --export NOTES_CLI_EDITOR:nvim
+SETUVAR fish_user_paths:/home/sagittarius/\x2ebun/bin\x1e/home/sagittarius/\x2elocal/share/pnpm\x1e/home/sagittarius/\x2elocal/bin
