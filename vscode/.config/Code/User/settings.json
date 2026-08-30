@@ -10,7 +10,7 @@
   // ─────────────────────────────────────────────
   //  EDITOR — APARÊNCIA
   // ─────────────────────────────────────────────
-  "editor.fontFamily": "Iosevka", // Iosevka, JetBrains Mono, JetBrainsMono Nerd Font
+  "editor.fontFamily": "JetBrainsMono Nerd Font", // Iosevka, JetBrains Mono, JetBrainsMono Nerd Font
   "editor.fontSize": 14,
   "editor.lineHeight": 1.4,
   "editor.fontLigatures": true,
@@ -476,5 +476,10 @@
         }
       ]
     }
-  }
+  },
+  "redhat.telemetry.enabled": true,
+  // ─────────────────────────────────────────────
+  // TODO TREE
+  // ─────────────────────────────────────────────
+  "todo-tree.ripgrep.ripgrep": "/usr/bin/rg"
 }
