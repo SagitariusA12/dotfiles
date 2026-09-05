@@ -30,7 +30,6 @@
   <property name="numRows" value="1"/>
   <property name="viewFixedRows" value="false"/>
   <property name="showPairedPages" value="false"/>
-  <property name="showPageShadow" value="true"/>
   <property name="layoutVertical" value="false"/>
   <property name="layoutRightToLeft" value="false"/>
   <property name="layoutBottomToTop" value="false"/>
@@ -171,12 +170,6 @@
     </data>
     <data name="middle">
       <attribute name="tool" type="string" value="hand"/>
-    </data>
-    <data name="mouse4">
-      <attribute name="tool" type="string" value="none"/>
-    </data>
-    <data name="mouse5">
-      <attribute name="tool" type="string" value="none"/>
     </data>
     <data name="right">
       <attribute name="tool" type="string" value="none"/>
