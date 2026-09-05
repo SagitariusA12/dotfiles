@@ -55,3 +55,16 @@ vscode/User/globalStorage/
 *.token
 *.pem
 *.key
+
+# ==========================
+# IGNORAR LIXO DO VSCODE
+# ==========================
+# Ignora tudo dentro de Code, exceto a pasta User
+vscode/.config/Code/*
+!vscode/.config/Code/User/
+
+# Dentro de User, ignora tudo exceto os 3 arquivos que você quer
+vscode/.config/Code/User/*
+!vscode/.config/Code/User/extensions.txt
+!vscode/.config/Code/User/keybindings.json
+!vscode/.config/Code/User/settings.json
