@@ -1,0 +1,57 @@
+--#############################
+--## WINDOWS AND WORKSPACES ###
+--#############################
+-- See https://wiki.hypr.land/Configuring/Window-Rules/
+-- See https://wiki.hypr.land/Configuring/Workspace-Rules/
+
+-- Ignore maximize requests from all apps
+
+hl.window_rule({
+    name = "suppress-maximize-events",
+    match = {
+        class = ".*",
+    },
+    suppress_event = "maximize",
+})
+
+-- Fix some dragging issues with XWayland
+hl.window_rule({
+    name = "fix-xwayland-drags",
+    match = {
+        class = "^$",
+        title = "^$",
+        xwayland = true,
+        float = true,
+        fullscreen = false,
+        pin = false,
+    },
+    no_focus = true,
+})
+
+-- hyprland-run floating terminal position
+hl.window_rule({
+    name = "move-hyprland-run",
+    match = {
+        class = "hyprland-run",
+    },
+    move = "20 monitor_h-120",
+    float = true,
+})
+
+-- --- Smart gaps (uncomment to enable "no gaps when only one window") ---
+-- workspace = w[tv1], gapsout:0, gapsin:0
+-- workspace = f[1],   gapsout:0, gapsin:0
+-- windowrule {
+--     name  = no-gaps-wtv1
+--     match:float      = false
+--     match:workspace  = w[tv1]
+--     border_size = 0
+--     rounding    = 0
+-- }
+-- windowrule {
+--     name  = no-gaps-f1
+--     match:float     = false
+--     match:workspace = f[1]
+--     border_size = 0
+--     rounding    = 0
+-- }

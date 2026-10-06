@@ -1,0 +1,10 @@
+--##################
+--## MY PROGRAMS ###
+--##################
+-- See https://wiki.hypr.land/Configuring/Keywords/
+
+
+terminal = "kitty"
+browser = "brave"
+fileManager = "nautilus"
+menu = "rofi -show run"
