@@ -1,9 +1,11 @@
 return {
 	"nvimtools/none-ls.nvim",
+
 	dependencies = {
 		"nvimtools/none-ls-extras.nvim",
 		"nvim-lua/plenary.nvim",
 	},
+
 	config = function()
 		local null_ls = require("null-ls")
 
@@ -12,15 +14,17 @@ return {
 				-- Lua
 				null_ls.builtins.formatting.stylua,
 
-				-- HTML, CSS, JS, TS...
+				-- HTML, CSS, JS, TS, JSON, YAML, Markdown
 				null_ls.builtins.formatting.prettier.with({
+					prefer_local = "node_modules/.bin",
+					extra_args = { "--tab-width", "4" },
 					filetypes = {
+						"html",
+						"css",
 						"javascript",
 						"javascriptreact",
 						"typescript",
 						"typescriptreact",
-						"html",
-						"css",
 						"json",
 						"yaml",
 						"markdown",
@@ -32,11 +36,17 @@ return {
 
 				-- Django Templates
 				null_ls.builtins.formatting.djlint.with({
-					filetypes = { "html", "django", "htmldjango" },
-					extra_args = { "--profile=django", "--indent=4" },
+					filetypes = {
+						"django",
+						"htmldjango",
+					},
+					extra_args = {
+						"--profile=django",
+						"--indent=4",
+					},
 				}),
 
-				-- Lint: ESLint
+				-- ESLint
 				require("none-ls.diagnostics.eslint_d").with({
 					filetypes = {
 						"javascript",
@@ -47,16 +57,22 @@ return {
 				}),
 			},
 
-			-- Formatar ao salvar
+			-- Formatar automaticamente ao salvar
 			on_attach = function(client, bufnr)
 				if client:supports_method("textDocument/formatting") then
 					local group = vim.api.nvim_create_augroup("NullLsFormatting_" .. bufnr, { clear = true })
+
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						group = group,
 						buffer = bufnr,
 						callback = function()
 							if vim.fn.bufname(bufnr) ~= "" and vim.bo[bufnr].buftype == "" then
-								vim.lsp.buf.format({ bufnr = bufnr, async = false })
+								vim.lsp.buf.format({
+									bufnr = bufnr,
+									name = "null-ls",
+									async = false,
+									timeout_ms = 5000,
+								})
 							end
 						end,
 					})
@@ -64,13 +80,20 @@ return {
 			end,
 		})
 
-		-- Formatador manual
+		-- Formatação manual
 		vim.keymap.set("n", "<leader>gl", function()
 			if vim.fn.bufname() ~= "" and vim.bo.buftype == "" then
-				vim.lsp.buf.format({ async = false })
+				vim.lsp.buf.format({
+					bufnr = 0,
+					name = "null-ls",
+					async = false,
+					timeout_ms = 5000,
+				})
 			else
 				print("Erro: Nenhum arquivo válido para formatação")
 			end
-		end, { desc = "Formatar arquivo" })
+		end, {
+			desc = "Formatar arquivo",
+		})
 	end,
 }

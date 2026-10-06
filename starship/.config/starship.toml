@@ -149,9 +149,9 @@ style = "fg:teal"
 format = '[[ $symbol( $version) ](fg:teal)]($style)'
 
 [python]
-symbol = ""
+symbol = ""
 style = "fg:teal"
-format = '[[ $symbol( $version) ](fg:teal)]($style)'
+format = '[[ $symbol( $version)( \($virtualenv\)) ](fg:teal)]($style)'
 
 [line_break]
 disabled = false

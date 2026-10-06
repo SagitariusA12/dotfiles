@@ -82,5 +82,5 @@ fish_add_path $UV_INSTALL_DIR
 # Java
 # ==========================================
 
-set -gx JAVA_HOME /usr/lib/jvm/jdk-21.0.7-oracle-x64
+set -gx JAVA_HOME /usr/lib/jvm/default
 fish_add_path $JAVA_HOME/bin

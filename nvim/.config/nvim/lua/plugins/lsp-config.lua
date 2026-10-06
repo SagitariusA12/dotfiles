@@ -1,126 +1,163 @@
 return {
-	-- Mason
-	{
-		"williamboman/mason.nvim",
-		config = function()
-			require("mason").setup()
-		end,
-	},
+    -- Mason
+    {
+        "williamboman/mason.nvim",
+        config = function()
+            require("mason").setup()
+        end,
+    },
 
-	-- Mason LSP bridge
-	{
-		"williamboman/mason-lspconfig.nvim",
-		config = function()
-			require("mason-lspconfig").setup({
-				ensure_installed = {
-					"lua_ls",
-					"ts_ls",
-					"html",
-					"cssls",
-					"clangd",
-					"jsonls",
-					"pyright",
-					"bashls",
-					"emmet_language_server",
-					"marksman", -- ✅ Markdown LSP
-				},
-				automatic_installation = true,
-			})
-		end,
-	},
+    -- Mason LSP bridge
+    {
+        "williamboman/mason-lspconfig.nvim",
+        config = function()
+            require("mason-lspconfig").setup({
+                ensure_installed = {
+                    "lua_ls",
+                    "gopls",
+                    "ts_ls",
+                    "html",
+                    "cssls",
+                    "clangd",
+                    "jsonls",
+                    "pyright",
+                    "bashls",
+                    "emmet_language_server",
+                    "marksman",
+                },
+                automatic_installation = true,
+            })
+        end,
+    },
 
-	-- LSP Config (Neovim 0.11+)
-	{
-		"neovim/nvim-lspconfig",
-		config = function()
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    -- LSP Config (Neovim 0.11+)
+    {
+        "neovim/nvim-lspconfig",
+        config = function()
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			------------------------------------------------------------------
-			-- CONFIGURAÇÕES DOS SERVERS
-			------------------------------------------------------------------
+            ------------------------------------------------------------------
+            -- CONFIGURAÇÕES DOS SERVERS
+            ------------------------------------------------------------------
 
-			vim.lsp.config("lua_ls", {
-				capabilities = capabilities,
-				settings = {
-					Lua = {
-						diagnostics = { globals = { "vim" } },
-						workspace = { checkThirdParty = false },
-						telemetry = { enable = false },
-					},
-				},
-			})
+            vim.lsp.config("lua_ls", {
+                capabilities = capabilities,
+                settings = {
+                    Lua = {
+                        diagnostics = { globals = { "vim" } },
+                        workspace = { checkThirdParty = false },
+                        telemetry = { enable = false },
+                    },
+                },
+            })
 
-			vim.lsp.config("ts_ls", { capabilities = capabilities })
-			vim.lsp.config("pyright", { capabilities = capabilities })
-			vim.lsp.config("html", { capabilities = capabilities })
-			vim.lsp.config("cssls", { capabilities = capabilities })
-			vim.lsp.config("clangd", { capabilities = capabilities })
-			vim.lsp.config("jsonls", { capabilities = capabilities })
-			vim.lsp.config("bashls", { capabilities = capabilities })
+            vim.lsp.config("gopls", {
+                capabilities = capabilities,
+            })
 
-			-- 🔥 Emmet
-			vim.lsp.config("emmet_language_server", {
-				capabilities = capabilities,
-				filetypes = {
-					"html",
-					"css",
-					"javascriptreact",
-					"typescriptreact",
-				},
-			})
+            vim.lsp.config("ts_ls", {
+                capabilities = capabilities,
+            })
 
-			-- 📝 Markdown
-			vim.lsp.config("marksman", {
-				capabilities = capabilities,
-			})
+            vim.lsp.config("pyright", {
+                capabilities = capabilities,
+            })
 
-			------------------------------------------------------------------
-			-- ATIVAÇÃO DOS SERVERS
-			------------------------------------------------------------------
+            vim.lsp.config("html", {
+                capabilities = capabilities,
 
-			vim.lsp.enable({
-				"lua_ls",
-				"ts_ls",
-				"pyright",
-				"html",
-				"cssls",
-				"clangd",
-				"jsonls",
-				"bashls",
-				"emmet_language_server",
-				"marksman", -- ✅ Markdown ativo
-			})
+                settings = {
+                    css = {
+                        lint = {
+                            validProperties = {},
+                        },
+                    },
+                },
+            })
+            vim.lsp.config("cssls", {
+                capabilities = capabilities,
+            })
 
-			------------------------------------------------------------------
-			-- KEYMAPS (apenas quando LSP anexar)
-			------------------------------------------------------------------
+            vim.lsp.config("clangd", {
+                capabilities = capabilities,
+            })
 
-			vim.api.nvim_create_autocmd("LspAttach", {
-				group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
-				callback = function(ev)
-					local opts = { buffer = ev.buf, noremap = true, silent = true }
+            vim.lsp.config("jsonls", {
+                capabilities = capabilities,
+            })
 
-					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-					vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-					vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-					vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-					vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-					vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-					vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-					vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-					vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-					vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-					vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-					vim.keymap.set("n", "<C-y>", vim.lsp.codelens.run, opts)
+            vim.lsp.config("bashls", {
+                capabilities = capabilities,
+            })
 
-					vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-					vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-					vim.keymap.set("n", "<space>wl", function()
-						print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-					end, opts)
-				end,
-			})
-		end,
-	},
+            -- 🔥 Emmet
+            vim.lsp.config("emmet_language_server", {
+                capabilities = capabilities,
+                filetypes = {
+                    "html",
+                    "css",
+                    "javascriptreact",
+                    "typescriptreact",
+                },
+            })
+
+            -- 📝 Markdown
+            vim.lsp.config("marksman", {
+                capabilities = capabilities,
+            })
+
+            ------------------------------------------------------------------
+            -- ATIVAÇÃO DOS SERVERS
+            ------------------------------------------------------------------
+
+            vim.lsp.enable({
+                "lua_ls",
+                "gopls",
+                "ts_ls",
+                "pyright",
+                "html",
+                "cssls",
+                "clangd",
+                "jsonls",
+                "bashls",
+                "emmet_language_server",
+                "marksman",
+            })
+
+            ------------------------------------------------------------------
+            -- KEYMAPS (apenas quando LSP anexar)
+            ------------------------------------------------------------------
+
+            vim.api.nvim_create_autocmd("LspAttach", {
+                group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
+                callback = function(ev)
+                    local opts = {
+                        buffer = ev.buf,
+                        noremap = true,
+                        silent = true,
+                    }
+
+                    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+                    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+                    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+                    vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
+                    vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+                    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+                    vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
+                    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+                    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+                    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+                    vim.keymap.set("n", "<C-y>", vim.lsp.codelens.run, opts)
+
+                    vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+                    vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+                    vim.keymap.set("n", "<space>wl", function()
+                        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                    end, opts)
+                end,
+            })
+        end,
+    },
 }
