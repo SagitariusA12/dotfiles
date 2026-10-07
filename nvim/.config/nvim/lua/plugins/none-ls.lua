@@ -8,6 +8,7 @@ return {
 
 	config = function()
 		local null_ls = require("null-ls")
+		local format_timeout = 15000
 
 		null_ls.setup({
 			sources = {
@@ -57,7 +58,7 @@ return {
 				}),
 			},
 
-			-- Formatar automaticamente ao salvar
+			-- Formatar ao salvar
 			on_attach = function(client, bufnr)
 				if client:supports_method("textDocument/formatting") then
 					local group = vim.api.nvim_create_augroup("NullLsFormatting_" .. bufnr, { clear = true })
@@ -71,7 +72,7 @@ return {
 									bufnr = bufnr,
 									name = "null-ls",
 									async = false,
-									timeout_ms = 5000,
+									timeout_ms = format_timeout,
 								})
 							end
 						end,
@@ -87,7 +88,7 @@ return {
 					bufnr = 0,
 					name = "null-ls",
 					async = false,
-					timeout_ms = 5000,
+					timeout_ms = format_timeout,
 				})
 			else
 				print("Erro: Nenhum arquivo válido para formatação")
