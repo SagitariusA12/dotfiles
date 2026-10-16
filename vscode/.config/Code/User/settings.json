@@ -1,8 +1,4 @@
 {
-  // ─────────────────────────────────────────────
-  //  FILES
-  // ─────────────────────────────────────────────
-  "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 1000,
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
